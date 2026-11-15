@@ -17,7 +17,7 @@ Program ini **hanya membaca layar** (screenshot). Tidak ada injeksi atau modifik
 ```
 gtd_value/
 ├── gtd_value.py        # program utama (overlay, tool screenshot & crop)
-├── update_values.py    # parser post update Discord -> values.json
+├── updates/            # simpan tiap post update value Discord di sini (file teks)
 ├── values.json         # data value unit
 ├── arrow.png           # template ikon panah ⇄ (dibuat sekali, untuk total per sisi)
 ├── templates/          # template ikon unit (dibuat sekali)
