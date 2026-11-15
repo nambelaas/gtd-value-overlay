@@ -1,0 +1,8 @@
+mss
+opencv-python
+numpy
+PyQt5
+pytesseract
+pyperclip
+pyobjc-framework-Quartz; sys_platform == "darwin"
+pywin32; sys_platform == "win32"

@@ -1,0 +1,62 @@
+LEADERBOARD
+Rose Royale
+Value: 1.45k+ --> 1.75k+
+Demand: 1/10 --> 3.5/10
+
+
+EXCLUSIVE
+Infectia
+Value: 30.45k+ --> 33k+
+
+Soulshard Stem
+Value: 11.25k+ --> 14.05k+
+Status: Rising --> Inflated
+
+Holographic Clover
+Value: 11.25k+ --> 12.65k+
+Status: Unstable --> Rising
+
+Chicken Coop
+Value: 6.05k+ --> 6.5k+
+Status: Unstable --> Slowly Rising
+
+Confusiflora
+Value: 3.2k+ --> 3.1k+
+Demand: 3.5/10 --> 5.5/10
+
+Hypnogaze Stem
+Value: 1.45k+ --> 2.8k+
+Demand: 7/10 --> 7.5/10
+Status: Unstable --> Inflated
+
+Black Clover
+Value: 2.45K+ --> 2.75K+
+Demand: 5.5/10 --> 7/10
+Status: Slowly Rising --> Fluctuating
+
+Triangrove
+Value: 870+ --> 1.1k+
+Demand: 6.5/10 --> 5.5/10
+
+Chronorchid
+Value: 735+ --> 1.05k+
+
+
+GODLY
+Grim Gardener
+Value: 41k+ --> 36.5k+
+Demand: 7.5/10 --> 8/10
+Status: Unstable --> Dropping
+
+Prismleaf
+Value: 27.8k+ --> 27.5k+
+Demand: 4/10 --> 5/10
+
+Overlord Stem
+Value: 2.75k+ --> 3k+
+
+
+ITEM
+x2 Candy Gift
+Demand: 5.5/10 --> 6.5/10
+Status: Unstable --> Fluctuating

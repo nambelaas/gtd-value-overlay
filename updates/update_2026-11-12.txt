@@ -1,0 +1,42 @@
+EXCLUSIVE
+Transfiguration Flower
+Value: 8.95k+ --> 10.65k+
+Demand: 8.5/10 --> 8/10
+
+Teslaflora
+Value: 9.55K+ --> 9.4K+
+Demand: 7/10 --> 6/10
+
+Egg Plantinum
+Value: 6.15k+ --> 6.25k+
+Status: Slowly Rising --> Unstable
+
+Shockolateflora
+Value: 4.2k+ --> 4.25k+
+Demand: 8/10 --> 7/10
+
+Timekeeper
+Value: 2.35K+ --> 2.65K+
+
+Clusterplant
+Value: 2.2K+ --> 2.15K+
+Demand: 6.5/10 --> 6/10
+
+Dual Bellflower
+Value: 1.6K+ --> 1.5K+
+Demand: 4/10 --> 5/10
+
+Pushpetal
+Value: 1.25k+ --> 1.35k+
+
+
+GODLY
+Chomp Man
+Value: 6.5k+ --> 7.2k+
+Demand: 4.5/10 --> 6/10
+Status: Fluctuating --> Unstable
+
+Beehive
+Value: 1.1k+ --> 1.3k+
+Demand: 7/10 --> 7.5/10
+Status: Unstable --> Fluctuating

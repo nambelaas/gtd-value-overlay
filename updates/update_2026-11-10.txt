@@ -1,0 +1,62 @@
+EXCLUSIVE
+Corrupted Stem
+Value: 11.6k+ --> 12.6k+
+Demand: 8/10 --> 6.5/10
+Status: Unstable --> Fluctuating
+
+Soulshard Stem
+Value: 9.85k+ --> 11.25k+
+
+Garden Dragon Keep
+Value: 7.7K+ --> 7.6K+
+
+Nullshade
+Value: 3.25k+ --> 3.65k+
+Demand: 8/10 --> 6/10
+
+Earth Dragon
+Value: 3.25k+ --> 3.05k+
+Demand: 8/10 --> 7/10
+Status: Unstable --> Fluctuating
+
+1st Bloomday Cake
+Value: 1.65k+ --> 1.8k+
+
+Silkshade
+Value: N/A --> 1.65k+
+Demand: N/A --> 5/10
+Status: N/A --> Unstable
+
+Skeleton Flytrap
+Value: N/A --> 1.35k+
+Demand: N/A --> 5.5/10
+Status: N/A --> Unstable
+
+Parasite Plant
+Value: 1.05k+ --> 1.2k+
+Demand: 6.5/10 --> 7/10
+
+Bunny Mech
+Value: 1.15k+ --> 1.05k+
+Status: Fluctuating --> Unstable
+
+Scopeleaf
+Value: 865+ --> 835+
+Demand: 4.5/10 --> 5/10
+Status: Fluctuating --> Unstable
+
+Ampliflora
+Value: 515+ --> 590+
+Demand: 3.5/10 --> 6/10
+Status: Fluctuating --> Unstable
+
+
+GODLY
+Grim Gardener
+Value: 47k+ --> 41k+
+Demand: 9.5/10 --> 7.5/10
+
+Stringshade
+Value: 815+ --> 495+
+Demand: 6/10 --> 3/10
+Status: Unstable --> Slowly Dropping

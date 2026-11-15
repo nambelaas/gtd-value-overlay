@@ -1,0 +1,277 @@
+{
+  "Shockfrost Sprout": {
+    "value": 2.25,
+    "demand": 7.5
+  },
+  "Stick Petal": {
+    "value": 2.15,
+    "demand": 5.5
+  },
+  "Parasite Plant": {
+    "value": 1.2,
+    "demand": 7,
+    "tier": "Exclusive",
+    "updated": "2026-11-10"
+  },
+  "Nullshade": {
+    "value": 3.65,
+    "demand": 6,
+    "tier": "Exclusive",
+    "updated": "2026-11-10"
+  },
+  "Egg Plantinum": {
+    "value": 6.5,
+    "demand": 8,
+    "tier": "Exclusive",
+    "status": "Unstable",
+    "updated": "2026-11-14"
+  },
+  "Garden Dragon Keep": {
+    "value": 7.6,
+    "demand": 9.5,
+    "tier": "Exclusive",
+    "updated": "2026-11-10"
+  },
+  "Grim Gardener": {
+    "value": 36.5,
+    "demand": 8,
+    "tier": "Godly",
+    "updated": "2026-11-14",
+    "status": "Dropping"
+  },
+  "Chicken Coop": {
+    "value": 6.5,
+    "demand": 8,
+    "tier": "Exclusive",
+    "updated": "2026-11-14",
+    "status": "Slowly Rising"
+  },
+  "Shockolateflora": {
+    "value": 4.25,
+    "demand": 7,
+    "tier": "Exclusive",
+    "updated": "2026-11-12"
+  },
+  "Electrosprout": {
+    "value": 2.15,
+    "demand": 6.5
+  },
+  "Soulshard Stem": {
+    "value": 14.05,
+    "demand": 10,
+    "tier": "Exclusive",
+    "updated": "2026-11-14",
+    "status": "Inflated"
+  },
+  "Infectia": {
+    "value": 33,
+    "demand": 8,
+    "status": "Rising",
+    "tier": "Exclusive",
+    "updated": "2026-11-14"
+  },
+  "Egg Basketstem": {
+    "value": 5.25,
+    "demand": 7,
+    "tier": "Exclusive",
+    "updated": "2026-11-14"
+  },
+  "Earth Dragon": {
+    "value": 3,
+    "demand": 8,
+    "status": "Unstable",
+    "tier": "Exclusive",
+    "updated": "2026-11-14"
+  },
+  "Strongest Punch Potato": {
+    "value": 2.7,
+    "demand": 6.5,
+    "tier": "Exclusive",
+    "updated": "2026-11-14"
+  },
+  "1st Bloomday Cake": {
+    "value": 1.65,
+    "tier": "Exclusive",
+    "updated": "2026-11-14"
+  },
+  "Scopeleaf": {
+    "value": 0.865,
+    "tier": "Exclusive",
+    "updated": "2026-11-14"
+  },
+  "Inversia": {
+    "value": 0.48,
+    "demand": 2,
+    "status": "Slowly Dropping",
+    "tier": "Exclusive",
+    "updated": "2026-11-14"
+  },
+  "Firecore Stem": {
+    "value": 0.375,
+    "demand": 1.5,
+    "status": "Fluctuating",
+    "tier": "Exclusive",
+    "updated": "2026-11-14"
+  },
+  "Dark Shardpetal": {
+    "value": 0.28,
+    "demand": 5,
+    "tier": "Exclusive",
+    "updated": "2026-11-14"
+  },
+  "Ghost Shroom": {
+    "value": 2.55,
+    "demand": 7.5,
+    "tier": "Godly",
+    "updated": "2026-11-14"
+  },
+  "Lucky Block Clover": {
+    "value": 0.625,
+    "demand": 4,
+    "tier": "Godly",
+    "updated": "2026-11-14"
+  },
+  "Transfiguration Flower": {
+    "value": 10.65,
+    "demand": 8,
+    "tier": "Exclusive",
+    "updated": "2026-11-12"
+  },
+  "Teslaflora": {
+    "value": 9.4,
+    "demand": 6,
+    "tier": "Exclusive",
+    "updated": "2026-11-12"
+  },
+  "Timekeeper": {
+    "value": 2.65,
+    "tier": "Exclusive",
+    "updated": "2026-11-12"
+  },
+  "Clusterplant": {
+    "value": 2.15,
+    "demand": 6,
+    "tier": "Exclusive",
+    "updated": "2026-11-12"
+  },
+  "Dual Bellflower": {
+    "value": 1.5,
+    "demand": 5,
+    "tier": "Exclusive",
+    "updated": "2026-11-12"
+  },
+  "Pushpetal": {
+    "value": 1.35,
+    "tier": "Exclusive",
+    "updated": "2026-11-12"
+  },
+  "Chomp Man": {
+    "value": 7.2,
+    "demand": 6,
+    "status": "Unstable",
+    "tier": "Godly",
+    "updated": "2026-11-12"
+  },
+  "Beehive": {
+    "value": 1.3,
+    "demand": 7.5,
+    "status": "Fluctuating",
+    "tier": "Godly",
+    "updated": "2026-11-12"
+  },
+  "Corrupted Stem": {
+    "value": 12.6,
+    "demand": 6.5,
+    "status": "Fluctuating",
+    "tier": "Exclusive",
+    "updated": "2026-11-10"
+  },
+  "Silkshade": {
+    "value": 1.65,
+    "demand": 5,
+    "status": "Unstable",
+    "tier": "Exclusive",
+    "updated": "2026-11-10"
+  },
+  "Skeleton Flytrap": {
+    "value": 1.35,
+    "demand": 5.5,
+    "status": "Unstable",
+    "tier": "Exclusive",
+    "updated": "2026-11-10"
+  },
+  "Bunny Mech": {
+    "value": 1.05,
+    "status": "Unstable",
+    "tier": "Exclusive",
+    "updated": "2026-11-10"
+  },
+  "Ampliflora": {
+    "value": 0.59,
+    "demand": 6,
+    "status": "Unstable",
+    "tier": "Exclusive",
+    "updated": "2026-11-10"
+  },
+  "Stringshade": {
+    "value": 0.495,
+    "demand": 3,
+    "status": "Slowly Dropping",
+    "tier": "Godly",
+    "updated": "2026-11-10"
+  },
+  "Rose Royale": {
+    "value": 1.75,
+    "demand": 3.5,
+    "tier": "Leaderboard",
+    "updated": "2026-11-14"
+  },
+  "Holographic Clover": {
+    "value": 12.65,
+    "status": "Rising",
+    "tier": "Exclusive",
+    "updated": "2026-11-14"
+  },
+  "Confusiflora": {
+    "value": 3.1,
+    "demand": 5.5,
+    "tier": "Exclusive",
+    "updated": "2026-11-14"
+  },
+  "Hypnogaze Stem": {
+    "value": 2.8,
+    "demand": 7.5,
+    "status": "Inflated",
+    "tier": "Exclusive",
+    "updated": "2026-11-14"
+  },
+  "Black Clover": {
+    "value": 2.75,
+    "demand": 7,
+    "status": "Fluctuating",
+    "tier": "Exclusive",
+    "updated": "2026-11-14"
+  },
+  "Triangrove": {
+    "value": 1.1,
+    "demand": 5.5,
+    "tier": "Exclusive",
+    "updated": "2026-11-14"
+  },
+  "Chronorchid": {
+    "value": 1.05,
+    "tier": "Exclusive",
+    "updated": "2026-11-14"
+  },
+  "Prismleaf": {
+    "value": 27.5,
+    "demand": 5,
+    "tier": "Godly",
+    "updated": "2026-11-14"
+  },
+  "Overlord Stem": {
+    "value": 3,
+    "tier": "Godly",
+    "updated": "2026-11-14"
+  }
+}
