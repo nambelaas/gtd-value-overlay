@@ -27,6 +27,7 @@ VALUES_FILE = Path(__file__).parent / "values.json"
 STORE_IN_K = True   # True : simpan dalam ribuan (30.45k -> 30.45 ; 865 -> 0.865)
                     # False: simpan angka penuh   (30.45k -> 30450 ; 865 -> 865)
 
+FIELDS = ("value:", "demand:", "status:")
 ARROW = re.compile(r"-->|→|->|=>")
 NUM = re.compile(r"(\d[\d,]*\.?\d*)\s*([kKmM]?)")
 DEMAND = re.compile(r"(\d+(?:\.\d+)?)\s*/\s*10")
@@ -68,14 +69,14 @@ def parse_post(text):
                 cur["status"] = last_part(line)
         else:
             nxt = lines[i + 1].lower() if i + 1 < len(lines) else ""
-            if nxt.startswith("value:"):                       # baris nama unit
+            if nxt.startswith(FIELDS):                         # baris nama unit (Value/Demand/Status berikutnya)
                 cur = {"name": line}
                 if tier:
                     cur["tier"] = tier
                 entries.append(cur)
             elif re.fullmatch(r"[A-Z][A-Z ]+", line):          # header kategori: EXCLUSIVE, GODLY, dst
                 tier, cur = line.title(), None
-    return [e for e in entries if "value" in e]
+    return [e for e in entries if any(k in e for k in ("value", "demand", "status"))]
 
 
 def tidy(x):
@@ -112,7 +113,7 @@ def date_from_name(name):
 
 def apply_post(data, lower, entries, post_date):
     iso = post_date.isoformat()
-    updated, added, skipped = [], [], []
+    updated, added, skipped, partial = [], [], [], []
     for e in entries:
         key = lower.get(e["name"].lower(), e["name"])
         old = data.get(key)
@@ -121,8 +122,9 @@ def apply_post(data, lower, entries, post_date):
             skipped.append((key, old_date))
             continue
         rec = dict(old) if old else {}
-        new_val = tidy(round(e["value"] / 1000 if STORE_IN_K else e["value"], 4))
-        rec["value"] = new_val
+        if "value" in e:
+            new_val = tidy(round(e["value"] / 1000 if STORE_IN_K else e["value"], 4))
+            rec["value"] = new_val
         if "demand" in e:
             rec["demand"] = tidy(e["demand"])
         if "status" in e:
@@ -132,11 +134,13 @@ def apply_post(data, lower, entries, post_date):
         rec["updated"] = iso
         data[key] = rec
         lower[key.lower()] = key
-        if old is None:
+        if "value" not in e:                                  # post hanya mengubah demand/status
+            partial.append((key, old is None))
+        elif old is None:
             added.append((key, new_val))
         else:
             updated.append((key, old.get("value"), new_val))
-    return updated, added, skipped
+    return updated, added, skipped, partial
 
 
 def main():
@@ -182,13 +186,15 @@ def main():
         if not entries:
             print("  Tidak ada unit yang terbaca. Pastikan formatnya 'Nama' lalu 'Value: ... --> ...'.")
             continue
-        updated, added, skipped = apply_post(data, lower, entries, d)
-        total_changed += len(updated) + len(added)
+        updated, added, skipped, partial = apply_post(data, lower, entries, d)
+        total_changed += len(updated) + len(added) + len(partial)
         all_added += [n for n, _ in added]
         print(f"  {len(entries)} unit terbaca -> {len(updated)} diperbarui, "
-              f"{len(added)} baru, {len(skipped)} dilewati (data lebih baru)")
+              f"{len(added)} baru, {len(partial)} hanya demand/status, {len(skipped)} dilewati (data lebih baru)")
         for name, old, new in updated:
             print(f"    {name}: {old} -> {new}")
+        for name, is_new in partial:
+            print(f"    (demand/status saja) {name}" + (" - BARU, belum punya value" if is_new else ""))
         for name, od in skipped:
             print(f"    (lewati) {name}: sudah ada data tanggal {od}")
 
