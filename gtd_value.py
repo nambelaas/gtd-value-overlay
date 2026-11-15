@@ -250,6 +250,7 @@ def run_overlay():
             self.items, self.pills = [], []
             self.font = QtGui.QFont("Arial", 11, QtGui.QFont.Bold)
             self.small = QtGui.QFont("Arial", 10, QtGui.QFont.Bold)
+            self.setAttribute(Qt.WA_MacAlwaysShowToolWindow)
 
         def update_items(self, items, pills):
             self.items, self.pills = items, pills
@@ -302,8 +303,23 @@ def run_overlay():
                     p.drawText(QtCore.QRectF(px + 8, rect.top() + 5 + i * lh, pw - 16, lh),
                                Qt.AlignLeft | Qt.AlignVCenter, t)
 
+        def mac_always_visible(self):
+            """Biar overlay tetap tampil di atas Roblox, termasuk saat fullscreen."""
+            if sys.platform != "darwin":
+                return
+            import objc
+            from AppKit import NSApp
+            view = objc.objc_object(c_void_p=int(self.winId()))
+            win = view.window()
+            win.setHidesOnDeactivate_(False)
+            win.setLevel_(25)                                  # di atas window biasa
+            win.setCollectionBehavior_((1 << 0) | (1 << 6) | (1 << 8))  # semua Space, ikut fullscreen app lain
+            NSApp.setActivationPolicy_(1)                      # tidak muncul di Dock/app switcher
+    
     ov = Overlay()
     ov.show()
+    ov.mac_always_visible()
+    
     worker = Worker()
     worker.result.connect(ov.update_items)
     worker.start()
