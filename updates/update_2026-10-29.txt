@@ -1,0 +1,47 @@
+EXCLUSIVE
+Teslaflora
+Value: 9.25K+ --> 9.55K+
+Demand: 7.5/10 --> 7/10
+
+Soulshard Stem
+Value: 5.85k+ --> 7.45k+
+
+Transfiguration Flower
+Value: 7.15k+ --> 7.4k+
+Demand: 9/10 --> 8.5/10
+
+Egg Plantinum
+Value: 4.8k+ --> 5.35k+
+Status: Unstable --> Slowly Rising
+
+Earth Dragon
+Value: 2.65k+ --> 2.9k+
+Status: Fluctuating --> Slowly Rising
+
+Festive Glowthorn
+Value: 1.25k+ --> 1.4k+
+Status: Unstable --> Fluctuating
+
+Timekeeper
+Value: 1.2K+ --> 1.3K+
+
+Festive Bulbpetal
+Value: 1.5K+ --> 1.25K+
+
+Drainroot
+Value: 735+ --> 615+
+Demand: 4/10 --> 3.5/10
+
+Bloomnova
+Value: 390+ --> 425+
+Demand: 1.5/10 --> 2/10
+Status: Unstable --> Fluctuating
+
+
+GODLY
+Chomp Man
+Value: 6.05k+ --> 6.5k+
+Status: Stable --> Fluctuating
+
+Sea Dragon
+Value: 3.4k+ --> 3.75k+

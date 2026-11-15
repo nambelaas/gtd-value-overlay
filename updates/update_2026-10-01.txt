@@ -1,0 +1,89 @@
+EXCLUSIVE
+Infectia
+Value: 24.95k+ --> 27.55k+
+Demand: 8/10 --> 7.5/10
+
+Budyguards
+Value: 9.45k+ --> 10.5k+
+Demand: 8/10 --> 7/10
+Status: Unstable --> Rising
+
+Chicken Coop
+Value: 5.6k+ --> 6k+
+Demand: 8.5/10 --> 7.5/10
+Status: Unstable --> Fluctuating
+
+Shockolateflora
+Value: 4.45k+ --> 4.25k+
+Demand: 6/10 --> 5/10
+
+Clusterplant
+Value: 1.95K+ --> 2.05K+
+Demand: 6.5/10 --> 7/10
+Status: Unstable --> Fluctuating
+
+Black Clover
+Value: 1.08K+ --> 1.55K+
+Demand: 6/10 --> 5/10
+
+Sprinklord
+Value: 1.12k+ --> 1.3k+
+Demand: 6/10 --> 5.5/10
+Status: Fluctuating --> Unstable
+
+Bouncebloom
+Value: 1.25K+ --> 1.3K+
+Demand: 6.5/10 --> 7/10
+
+Scopeleaf
+Value: 1.29k+ --> 1.25k+
+Demand: 6/10 --> 5/10
+
+Bird Fountain
+Value: 1.13K+ --> 1.2K+
+Demand: 6.5/10 --> 6/10
+
+Astraflora
+Value: 755+ --> 850+
+Demand: 3/10 --> 5/10
+Status: Fluctuating --> Unstable
+
+Triangrove
+Value: 900+ --> 765+
+Demand: 5.5/10 --> 5/10
+
+Rosebeam
+Value: 630+ --> 670+
+
+Tremor Tree
+Value: 545+ --> 550+
+Demand: 6.5/10 --> 4.5/10
+
+Fireflies
+Value: 475+ --> 460+
+Demand: 5.5/10 --> 3.5/10
+Status: Unstable --> Stable
+
+Beaconbud
+Value: 345+ --> 250+
+Demand: 2/10 --> 3/10
+Status: Stable --> Unstable
+
+
+GODLY
+Prismleaf
+Value: 23.5k+ --> 27k+
+Demand: 5.5/10 --> 5/10
+
+Ghost Shroom
+Value: 2k+ --> 2.35k+
+Demand: 8/10 --> 7/10
+
+Distortion Flower
+Value: 750+ --> 820+
+Demand: 4.5/10 --> 3/10
+
+Dreamshroom
+Value: 150+ --> 160+
+Demand: 2.5/10 --> 1.5/10
+Status: Fluctuating --> Stable

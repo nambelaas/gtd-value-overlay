@@ -1,0 +1,61 @@
+EXCLUSIVE
+Garden Dragon Keep
+Value: 2.95K+ --> 3.5K+
+Demand: 9/10 --> 10/10
+Status: Slowly Rising --> Rising
+
+Earth Dragon
+Value: 2.25k+ --> 2.3k+
+Demand: 8/10 --> 6/10
+
+1st Bloomday Cake
+Value: 1.4k+ --> 1.6k+
+Demand: 7/10 --> 7.5/10
+
+Shockfrost Sprout
+Value: 1.35k+ --> 1.6k+
+Demand: 8/10 --> 7/10
+Status: Fluctuating --> Unstable
+
+Graviflora
+Value: N/A --> 1.2k+
+Demand: N/A --> 6.5/10
+Status: N/A --> Unstable
+
+Signal Stem
+Value: N/A --> 950+
+Demand: N/A --> 7.5/10
+Status: N/A --> Unstable
+
+Squid Plant
+Value: 475+ --> 495+
+Demand: 3/10 --> 2/10
+Status: Fluctuating --> Stable
+
+Trithorn
+Value: 340+ --> 355+
+Demand: 6/10 --> 4/10
+Status: Unstable --> Fluctuating
+
+
+GODLY
+Bunny Burrow
+Value: 13k+ --> 13.5k+
+Status: Unstable --> Rising
+
+Fire Dragon
+Value: 9.65k+ --> 9.25k+
+Demand: 3/10 --> 4/10
+
+
+LEGENDARY
+Gingerbread Seedmill
+Value: 2.82k+ --> 4.35k+
+Status: Unstable --> Inflated
+
+
+ITEMS
+x2 Fertilizer
+Value: N/A --> 2.95k+
+Demand: N/A --> 7.5/10
+Status: N/A --> Unstable

@@ -1,0 +1,48 @@
+EXCLUSIVE
+Soulshard Stem
+Value: 7.45k+ --> 9.85k+
+Status: Inflated --> Rising
+
+Transfiguration Flower
+Value: 7.9k+ --> 8.95k+
+Status: Fluctuating --> Rising
+
+Earth Dragon
+Value: 3k+ --> 3.25k+
+
+Hypnogaze Stem
+Value: 925+ --> 1.45k+
+Status: Fluctuating --> Unstable
+
+Pushpetal
+Value: 1.15k+ --> 1.25k+
+Demand: 7.5/10 --> 7/10
+
+Sightstalk
+Value: 290+ --> 600+
+Demand: 1/10 --> 2/10
+Status: Stable --> Unstable
+
+
+GODLY
+Bunny Burrow
+Value: 14.55k+ --> 14.8k+
+
+Winterray Flower
+Value: 5.3k+ --> 5.15k+
+
+Distortion Flower
+Value: 820+ --> 1k+
+Demand: 3/10 --> 2.5/10
+
+CoffinRoot
+Value: N/A --> 390+
+Demand: N/A --> 1.5/10
+Status: N/A --> Unstable
+
+
+ITEM
+x2 Candy Gift
+Value: N/A --> 2.35k+
+Demand: N/A --> 5.5/10
+Status: N/A --> Unstable

@@ -1,0 +1,74 @@
+EXCLUSIVE
+Gold Bunny Burrow
+Value: 22.5k+ --> 24.45k+
+
+Silver Bunny Burrow
+Value: 16.2k+ --> 16.8k+
+Demand: 5/10 --> 6/10
+Status: Slowly Rising --> Unstable
+
+Corrupted Stem
+Value: 10.25k+ --> 11k+
+Demand: 7.5/10 --> 7/10
+Status: Slowly Rising --> Unstable
+
+Garden Dragon Keep
+Value: 5.7K+ --> 6.95K+
+Demand: 10/10 --> 9.5/10
+
+Blinkbloom
+Value: 2.1k+ --> 2.25k+
+Status: Fluctuating --> Unstable
+
+Bunny Mech
+Value: 1.05k+ --> 1.15k+
+Demand: 3/10 --> 5.5/10
+
+Pushpetal
+Value: 1.2k+ --> 1k+
+Demand: 6.5/10 --> 7/10
+
+Hypnogaze Stem
+Value: 535+ --> 925+
+Demand: 3/10 --> 7/10
+
+Drainroot
+Value: 550+ --> 745+
+
+Chronorchid
+Value: 745+ --> 735+
+Demand: 5.5/10 --> 6/10
+
+Lava Golem
+Value: 495+ --> 580+
+
+Carrotastrophe
+Value: 430+ --> 570+
+Demand: 2.5/10 --> 3/10
+
+Banana Peel
+Value: 355+ --> 535+
+Demand: 2/10 --> 3.5/10
+
+
+GODLY
+Sorcerer's Stem
+Value: 9.5k+ --> 9.8k+
+Demand: 6.5/10 --> 7.5/10
+
+Fire Dragon
+Value: 9.25k+ --> 7.95k+
+Demand: 4/10 --> 3.5/10
+Status: Slowly Dropping --> Dropping
+
+Chomp Man
+Value: 5.6k+ --> 6.05k+
+Demand: 4/10 --> 4.5/10
+
+Lucky Riftroot
+Value: 720+ --> 1.1k+
+Demand: 4.5/10 --> 2.5/10
+
+Bouncing Shroom
+Demand: 5.5/10 --> 6.5/10
+Status: Unstable --> Fluctuating

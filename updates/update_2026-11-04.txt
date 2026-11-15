@@ -1,0 +1,33 @@
+EXCLUSIVE
+Nullshade
+Value: N/A --> 3.3k+
+Demand: N/A --> 8.5/10
+Status: N/A --> Unstable
+
+Shockfrost Sprout
+Value: 2.2k+ --> 2.3k+
+Status: Fluctuating --> Slowly Rising
+
+Black Clover
+Value: 2.05K+ --> 2.45K+
+Demand: 5/10 --> 5.5/10
+
+Petriflora
+Value: N/A --> 1.4k+
+Demand: N/A --> 5.5/10
+Status: N/A --> Unstable
+
+Parasite Plant
+Value: 795+ --> 1.05k+
+Demand: 5.5/10 --> 6.5/10
+
+
+GODLY
+Grim Gardener
+Value: N/A --> 47k+
+Demand: N/A --> 9.5/10
+Status: N/A --> Unstable
+
+Sorcerer's Stem
+Value: 9.8k+ --> 9.75k+
+Demand: 7.5/10 --> 6.5/10

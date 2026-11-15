@@ -1,0 +1,85 @@
+EXCLUSIVE
+Gold Infectia
+Value: 82k+ -> 90k+ (O/C) --> 295k+ -> 370k+ (O/C)
+Demand: 4/10 --> 3.5/10
+
+Gold Chicken Coop
+Value: 110k+ -> 165k+ (O/C) --> 180k+ -> 245k+ (O/C)
+Demand: 5/10 --> 3/10
+
+Infectia
+Value: 27.55k+ --> 27.85k+
+Demand: 7.5/10 --> 7/10
+
+Silver Bunny Burrow
+Value: 14.8k+ --> 15.5k+
+Demand: 3.5/10 --> 5/10
+Status: Rising --> Slowly Rising
+
+Chicken Coop
+Value: 5.75k+ --> 5.55k+
+Status: Fluctuating --> Unstable
+
+Garden Dragon Keep
+Value: 2.25K+ --> 2.95K+
+Status: Fluctuating --> Slowly Rising
+
+Black Clover
+Value: 1.55K+ --> 1.9K+
+
+Shockfrost Sprout
+Value: 1.3k+ --> 1.35k+
+Demand: 8.5/10 --> 8/10
+Status: Unstable --> Fluctuating
+
+Parasite Plant
+Value: 1.25k+ --> 975+
+Demand: 7/10 --> 6/10
+
+Mortarfern
+Value: 1.05k+ --> 950+
+Demand: 4.5/10 --> 3.5/10
+
+Triangrove
+Value: 765+ --> 840+
+
+Chronorchid
+Value: 730+ --> 660+
+Demand: 4.5/10 --> 4/10
+
+
+GODLY
+Sorcerer's Stem
+Value: 9.5k+ --> 9.85k+
+Demand: 7.5/10 --> 6.5/10
+Status: Dropping --> Unstable
+
+Subzero Stem
+Value: 9.3k+ --> 9.7k+
+Demand: 6.5/10 --> 5.5/10
+Status: Fluctuating --> Slowly Rising
+
+Ghost Shroom
+Value: 2.25k+ --> 2.45k+
+Demand: 8.5/10 --> 7.5/10
+
+Mudmauler
+Value: 530+ --> 540+
+Demand: 4/10 --> 1.5/10
+Status: Unstable --> Stable
+
+Garden Fairy Well
+Value: 320+ --> 355+
+Demand: 4.5/10 --> 5/10
+Status: Slowly Dropping --> Fluctuating
+
+Icebuds
+Value: 5+ --> 150+
+Demand: 2.5/10 --> 2/10
+
+
+LOW RARITY VALUABLE
+Snowman
+Value: 4.67k+ --> 5.15k+
+Demand: 3.5/10 --> 3/10
+Status: Fluctuating --> Slowly Rising

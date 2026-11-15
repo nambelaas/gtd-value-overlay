@@ -1,0 +1,89 @@
+EXCLUSIVE
+Silver Bunny Burrow
+Value: 16.8k+ --> 16.2k+
+Status: Unstable --> Fluctuating
+
+Corrupted Stem
+Value: 11k+ --> 11.6k+
+Demand: 7/10 --> 8/10
+
+Transfiguration Flower
+Value: 7.4k+ --> 7.9k+
+
+Garden Dragon Keep
+Value: 7.1K+ --> 7.7K+
+Status: Unstable --> Fluctuating
+
+Watering Can
+Value: 4.55K+ --> 6.35K+
+Demand: 7/10 --> 8.5/10
+
+Confusiflora
+Value: 3.15k+ --> 3.2k+
+Demand: 4.5/10 --> 3.5/10
+
+Shockfrost Sprout
+Value: 1.85k+ --> 2.2k+
+
+Stickpetal
+Value: 2.05K+ --> 2.15K+
+Demand: 6/10 --> 5.5/10
+Status: Slowly Rising --> Unstable
+
+Timekeeper
+Value: 1.3K+ --> 2.05K+
+Demand: 7/10 --> 8/10
+
+Dual Bellflower
+Value: 1.4K+ --> 1.6K+
+
+Bird Fountain
+Value: 1.35K+ --> 1.6K+
+
+1st Bloomday Cake
+Value: 1.7k+ --> 1.55k+
+
+Frost Golem
+Value: 1.2K+ --> 1.25K+
+Demand: 4/10 --> 2.5/10
+
+Treasure Trap
+Value: 1.1k+ --> 1.2k+
+Demand: 4/10 --> 3.5/10
+
+Pushpetal
+Value: 1k+ --> 1.15k+
+Demand: 7/10 --> 7.5/10
+
+Triangrove
+Value: 740+ --> 870+
+Demand: 7/10 --> 6.5/10
+Status: Unstable --> Fluctuating
+
+Sentry Stem
+Value: 870+ --> 830+
+Demand: 2.5/10 --> 1.5/10
+Status: Slowly Dropping --> Unstable
+
+Parasite Plant
+Value: 740+ --> 795+
+Demand: 4.5/10 --> 5.5/10
+
+Tremor Tree
+Value: 550+ --> 750+
+Demand: 4.5/10 --> 2.5/10
+
+Medusa Flower
+Value: 410+ --> 585+
+
+Beaconbud
+Value: 250+ --> 210+
+Demand: 3/10 --> 1/10
+Status: Unstable --> Fluctuating
+
+
+GODLY
+Stringshade
+Value: N/A --> 815+
+Demand: N/A --> 6/10
+Status: N/A --> Unstable

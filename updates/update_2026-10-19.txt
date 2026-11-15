@@ -1,0 +1,83 @@
+EXCLUSIVE
+Infectia
+Value: 28.4k+ --> 28k+
+Demand: 6.5/10 --> 7.5/10
+
+Budyguards
+Value: 12.25k+ --> 11.75k+
+Status: Rising --> Unstable
+
+Egg Plantinum
+Value: 4.6k+ --> 4.8k+
+Demand: 8.5/10 --> 9/10
+
+Garden Dragon Keep
+Value: 4.05K+ --> 4.75K+
+
+Earth Dragon
+Value: 2.3k+ --> 2.65k+
+Demand: 6/10 --> 7.5/10
+
+Stickpetal
+Value: 1.9K+ --> 2.05K+
+
+1st Bloomday Cake
+Value: 1.6k+ --> 1.7k+
+Demand: 7.5/10 --> 7/10
+Status: Slowly Rising --> Unstable
+
+Bouncebloom
+Value: 1.3K+ --> 1.35K+
+Demand: 7/10 --> 6/10
+
+Regeneration Flower
+Value: 1.14K+ --> 1.25K+
+
+Graviflora
+Value: 1.2k+ --> 1.05k+
+Demand: 6.5/10 --> 5/10
+
+Scopeleaf
+Value: 1.1k+ --> 900+
+Demand: 5/10 --> 4.5/10
+
+Signal Stem
+Value: 950+ --> 820+
+Demand: 7.5/10 --> 4.5/10
+
+Fireflies
+Value: 460+ --> 560+
+Demand: 3.5/10 --> 4.5/10
+Status: Stable --> Fluctuating
+
+Axolotl Hideout
+Value: 470+ --> 485+
+Demand: 6.5/10 --> 5.5/10
+
+Orbarrage Bloom
+Value: 365+ --> 360+
+Demand: 4/10 --> 2/10
+Status: Fluctuating --> Stable
+
+Chicken Coop
+Demand: 8/10 --> 8.5/10
+
+Egg Basketstem
+Demand: 6.5/10 --> 6/10
+
+
+GODLY
+Sea Dragon
+Value: 3.45k+ --> 3.4k+
+Demand: 5/10 --> 5.5/10
+
+Confusion Plant
+Value: 990+ --> 1.15k+
+Demand: 7.5/10 --> 7/10
+
+
+LEGENDARY
+Garden Alien
+Value: N/A --> 105+
+Demand: N/A --> 2.5/10
+Status: N/A --> Stable

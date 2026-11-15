@@ -1,0 +1,62 @@
+EXCLUSIVE
+Teslaflora
+Value: 8.46K+ --> 8.8K+
+
+Transfiguration Flower
+Value: 7.57k+ --> 7.55k+
+Demand: 6/10 --> 7.5/10
+Status: Unstable --> Fluctuating
+
+Chicken Coop
+Value: 5.18k+ --> 5.6k+
+Demand: 8/10 --> 8.5/10
+
+Electrosprout
+Value: 2.25k+ --> 2.3k+
+Demand: 6/10 --> 6.5/10
+Status: Slowly Dropping --> Unstable
+
+Garden Dragon Keep
+Value: 1.93K+ --> 2.1K+
+
+Spellstem
+Value: 1.26K+ --> 1.35K+
+Demand: 6.5/10 --> 7/10
+Status: Unstable --> Fluctuating
+
+Bouncebloom
+Value: 1.17K+ --> 1.25K+
+Demand: 5/10 --> 6.5/10
+Status: Unstable --> Fluctuating
+
+Timekeeper
+Value: 1.05K+ --> 1.2K+
+Demand: 5.5/10 --> 7/10
+Status: Fluctuating --> Slowly Rising
+
+Dual Bellflower
+Value: 965+ --> 1.15K+
+
+Trithorn
+Value: 395+ --> 340+
+Demand: 4/10 --> 6/10
+
+Voltshade
+Value: 235+ --> 230+
+Status: Fluctuating --> Stable
+
+
+GODLY
+Sorcerer's Stem
+Value: 11.6k+ --> 10.2k+
+Demand: 7/10 --> 7.5/10
+Status: Unstable --> Dropping
+
+Bloodvine
+Value: 130+ --> 110+
+Demand: 3/10 --> 3.5/10
+
+
+LEGENDARY
+Walnut
+Value: 0.1+ --> 1.5+

@@ -1,0 +1,62 @@
+LEADERBOARD
+Gold Regeneration Flower
+Value: N/A --> 10k+ -> 14k+ (o/c)
+Demand: N/A --> 2.5/10
+Status: N/A --> Unstable
+
+Bronze Astraflora
+Value: 15k+ -> 25k+ (O/C) --> 10k+ -> 13k+ (O/C)
+Demand: 2.5/10 --> 1.5/10
+
+Gold Voltshade
+Value: 9k+ -> 14k+ (O/C) --> 8.5k+ -> 10.5k+ (O/C)
+Demand: 7/10 --> 2.5/10
+
+
+EXCLUSIVE
+Stickpetal
+Value: 1.7K+ --> 1.9K+
+
+Shockfrost Sprout
+Value: N/A --> 1.3k+
+Demand: N/A --> 8.5/10
+Status: N/A --> Unstable
+
+Parasite Plant
+Value: N/A --> 1.25k+
+Demand: N/A --> 7/10
+Status: N/A --> Unstable
+
+Ice Dragon
+Value: 510+ --> 1k+
+Demand: 3/10 --> 2.5/10
+Status: Fluctuating --> Slowly Rising
+
+Viridian Branch
+Value: 480+ --> 715+
+Demand: 5/10 --> 3.5/10
+
+Iced Prismflower
+Value: 485+ --> 560+
+Demand: 4/10 --> 3/10
+
+Sundialstalk
+Value: 430+ --> 510+
+Demand: 4.5/10 --> 3/10
+
+Toxileaf
+Value: 315+ --> 390+
+Demand: 4/10 --> 3/10
+
+
+LEGENDARY
+Seedmill
+Value: 460+ --> 830+
+Demand: 5/10 --> 4/10
+Status: Stable --> Slowly Rising
+
+
+ITEM
+Sandbox Mode
+Value: 2k+ --> 2.15k+
+Demand: 3.5/10 --> 3/10

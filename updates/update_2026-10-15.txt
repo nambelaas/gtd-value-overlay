@@ -1,0 +1,125 @@
+LEADERBOARD
+Rose Royale
+Value: 1.5k+ --> 1.45k+
+Demand: 3.5/10 --> 1/10
+
+
+EXCLUSIVE
+Infectia
+Value: 27.85k+ --> 28.4k+
+Demand: 7/10 --> 6.5/10
+Status: Unstable --> Fluctuating
+
+Holographic Clover
+Value: 10.25k+ --> 11k+
+Demand: 8/10 --> 7/10
+
+Corrupted Stem
+Value: 8.9k+ --> 9.65k+
+Demand: 8/10 --> 6/10
+
+Transfiguration Flower
+Value: 7.65k+ --> 7.45k+
+Demand: 7.5/10 --> 8/10
+Status: Fluctuating --> Unstable
+
+Blossom Barrage
+Value: 5.1k+ --> 5.25k+
+Demand: 4/10 --> 3/10
+
+Rainbow Confusion Plant
+Value: 4.35k+ --> 4.65k+
+Demand: 2/10 --> 1/10
+
+Egg Plantinum
+Value: 4.2k+ --> 4.6k+
+Demand: 8/10 --> 8.5/10
+
+Watering Can
+Value: 3.85K+ --> 4.55K+
+Demand: 8/10 --> 7/10
+
+Garden Dragon Keep
+Value: 3.5K+ --> 4.05K+
+
+Confusiflora
+Value: 2.7k+ --> 3.15k+
+Demand: 5/10 --> 4.5/10
+
+Clusterplant
+Value: 2.05K+ --> 2.15K+
+Demand: 7/10 --> 6/10
+
+Blinkbloom
+Value: 2.2k+ --> 2.1k+
+
+Shockfrost Sprout
+Value: 1.6k+ --> 1.7k+
+Demand: 7/10 --> 8/10
+
+Festive Bulbpetal
+Value: 1.88K+ --> 1.5K+
+Status: Unstable --> Fluctuating
+
+Spellstem
+Value: 1.3K+ --> 1.35K+
+Status: Fluctuating --> Unstable
+
+Dual Bellflower
+Value: 1.15K+ --> 1.2K+
+Demand: 6.5/10 --> 4.5/10
+
+Astraflora
+Value: 850+ --> 910+
+Status: Unstable --> Fluctuating
+
+Butterfly Hut
+Value: 425+ --> 475+
+Demand: 5/10 --> 2/10
+Status: Fluctuating --> Stable
+
+Astral Blossom
+Value: 130+ --> 150+
+
+Frankensprout
+Demand: 5/10 --> 2/10
+Status: Fluctuating --> Stable
+
+
+GODLY
+Prismleaf
+Value: 27k+ --> 28.35k+
+Demand: 5/10 --> 4.5/10
+
+Bunny Burrow
+Value: 13.5k+ --> 13.65k+
+Demand: 8.5/10 --> 8/10
+Status: Rising --> Unstable
+
+Subzero Stem
+Value: 9.7k+ --> 10.7k+
+
+Sorcerer's Stem
+Value: 9.85k+ --> 9.5k+
+
+Overlord Stem
+Value: 2.55k+ --> 2.5k+
+Demand: 7/10 --> 6/10
+
+Lucky Clover
+Value: 1.15K+ --> 1.4K+
+Demand: 6.5/10 --> 5/10
+Status: Fluctuating --> Slowly Rising
+
+Venus Flytrap
+Value: 385+ --> 395+
+Demand: 4/10 --> 3/10
+
+Spiritwood
+Value: N/A --> 60+
+Demand: N/A --> 2/10
+Status: N/A --> Stable
+ITEM
+100K Seeds Gift
+Value: N/A --> 2.1k+ -> 9.3k+
+Demand: 10/10 --> 1/10

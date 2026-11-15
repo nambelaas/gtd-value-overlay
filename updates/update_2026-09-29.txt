@@ -1,0 +1,48 @@
+EXCLUSIVE
+Silver Bunny Burrow
+Value: 13.15k+ --> 14.8k+
+Demand: 6.5/10 --> 3.5/10
+
+Holographic Clover
+Value: 8.4k+ --> 9.1k+
+Demand: 7/10 --> 7.5/10
+
+Festive Garden Warbell
+Value: 7.78k+ --> 8.65k+
+
+Egg Plantinum
+Value: 2.75k+ --> 3.55k+
+Demand: 6.5/10 --> 8/10
+Status: Rising --> Unstable
+
+Confusiflora
+Value: 2.65k+ --> 2.7k+
+Status: Slowly Rising --> Fluctuating
+
+Electric Beetroot
+Value: 1.08K+ --> 1.4K+
+
+Ampliflora
+Value: 690+ --> 665+
+Demand: 6/10 --> 4/10
+
+Drainroot
+Value: 450+ --> 520+
+Demand: 5.5/10 --> 6/10
+Status: Fluctuating --> Unstable
+
+Star Fruit
+Value: 360+ --> 520+
+Demand: 2.5/10 --> 4.5/10
+Status: Stable --> Unstable
+
+
+GODLY
+Confusion Plant
+Value: 900+ --> 985+
+Demand: 4/10 --> 6/10
+
+Garden Fairy Well
+Value: 400+ --> 320+
+Demand: 5/10 --> 4.5/10
+Status: Fluctuating --> Slowly Dropping

@@ -1,0 +1,52 @@
+EXCLUSIVE
+Gold Bunny Burrow
+Value: 17k+ --> 22.5k+
+Demand: 5.5/10 --> 4/10
+
+Corrupted Stem
+Value: 7.7k+ --> 7.85k+
+
+Garden Dragon Keep
+Value: 1.73K+ --> 1.93K+
+
+Scopeleaf
+Value: N/A --> 1.43k+
+Demand: N/A --> 7/10
+Status: N/A --> Unstable
+
+1st Bloomday Cake
+Value: 955+ --> 1.2k+
+Status: Unstable --> Slowly Rising
+
+Triangrove
+Value: N/A --> 955+
+Demand: N/A --> 6.5/10
+Status: N/A --> Unstable
+
+Ampliflora
+Value: 870+ --> 690+
+Demand: 4/10 --> 6/10
+
+Gold Feastflower
+Value: 840+ --> 690+
+Demand: 5/10 --> 3.5/10
+Status: Dropping --> Fluctuating
+
+Carrotastrophe
+Value: 130+ --> 430+
+Demand: 1/10 --> 2.5/10
+Status: Stable --> Unstable
+
+Enchanterberries
+Value: 530+ --> 370+
+
+
+GODLY
+Witchleaf
+Value: 65k+ -> 80k+ (O/C) --> 90k+ -> 100k+ (O/C)
+Demand: 5/10 --> 6/10
+Status: Unstable --> Inflated
+
+Bouncing Shroom
+Value: 1.81k+ --> 2k+
+Demand: 5/10 --> 5.5/10

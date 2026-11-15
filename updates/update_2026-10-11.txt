@@ -1,0 +1,63 @@
+LEADERBOARD
+Bronze Frost Golem
+Value: O/C --> 9.1k+
+Demand: 10/10 --> 1/10
+Status: Stable --> Unstable
+
+
+EXCLUSIVE
+Budyguards
+Value: 10.5k+ --> 11.85k+
+Demand: 7/10 --> 9/10
+
+Holographic Clover
+Value: 9.1k+ --> 10.25k+
+Demand: 7.5/10 --> 8/10
+
+Festive Garden Warbell
+Value: 8.65k+ --> 10k+
+Demand: 8.5/10 --> 8/10
+
+Transfiguration Flower
+Value: 7.7k+ --> 7.65k+
+Demand: 7/10 --> 7.5/10
+Status: Unstable --> Fluctuating
+
+Shockolateflora
+Value: 4.25k+ --> 4.9k+
+Demand: 5/10 --> 8/10
+
+Egg Plantinum
+Value: 3.75k+ --> 4.2k+
+Demand: 8.5/10 --> 8/10
+
+Watering Can
+Value: 2.84K+ --> 3.85K+
+Demand: 7/10 --> 8/10
+
+Strongest Punch Potato
+Value: 2.4k+ --> 2.25k+
+
+Sprinklord
+Value: 1.3k+ --> 1.25k+
+Demand: 5.5/10 --> 6/10
+Status: Unstable --> Fluctuating
+
+Slay Stem
+Value: 735+ --> 565+
+Demand: 3/10 --> 4/10
+Status: Unstable --> Fluctuating
+
+Sunfire Blossom
+Value: 450+ --> 425+
+Demand: 4/10 --> 3.5/10
+
+Spellstem
+Demand: 6.5/10 --> 5.5/10
+Status: Unstable --> Fluctuating
+
+
+GODLY
+Confusion Plant
+Value: 985+ --> 990+
+Demand: 6/10 --> 7.5/10

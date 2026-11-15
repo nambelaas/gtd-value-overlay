@@ -1,0 +1,78 @@
+EXCLUSIVE
+Silver Bunny Burrow
+Value: 15.5k+ --> 16.2k+
+
+Budyguards
+Value: 11.85k+ --> 12.25k+
+
+Corrupted Stem
+Value: 9.65k+ --> 10.25k+
+Demand: 6/10 --> 7.5/10
+
+Teslaflora
+Value: 9.1K+ --> 9.25K+
+Demand: 8/10 --> 7.5/10
+Status: Fluctuating --> Unstable
+
+Chicken Coop
+Value: 5.55k+ --> 5.85k+
+
+Shockolateflora
+Value: 4.9k+ --> 4.5k+
+Status: Fluctuating --> Unstable
+
+Strongest Punch Potato
+Value: 2.25k+ --> 2.5k+
+Demand: 7/10 --> 8/10
+
+Sentry Stem
+Value: 1.05k+ --> 870+
+Demand: 4.5/10 --> 2.5/10
+Status: Stable --> Slowly Dropping
+
+Parasite Plant
+Value: 975+ --> 790+
+Demand: 6/10 --> 5.5/10
+
+Chronorchid
+Value: 660+ --> 745+
+Demand: 4/10 --> 5.5/10
+
+
+GODLY
+Winterray Flower
+Value: 5.2k+ --> 5.3k+
+Demand: 3/10 --> 6/10
+
+
+ITEM
+x2 Fertilizer
+Value: 2.95k+ --> 3.4k+
+Demand: 7.5/10 --> 7/10
+
+x3 Game Speed Gift
+Value: 845+ --> 1.65k+
+Demand: 7/10 --> 6.5/10
+Status: Fluctuating --> Slowly Rising
+
+x2 Seeds Gift
+Value: 1.21k+ --> 1.55k+
+Demand: 6.5/10 --> 6/10
+
+VIP Gift
+Value: 840+ --> 1.35k+
+Demand: 7.5/10 --> 6/10
+
+x2 Golden Tickets Gift
+Value: 650+ --> 950+
+Demand: 3/10 --> 2/10
+
+Auto Trait Roll
+Value: N/A --> 675+
+Demand: N/A --> 4/10
+Status: N/A --> Unstable
+
++1 Equipped Unit Gift
+Value: 15+ --> 250+
+Demand: 4.5/10 --> 5/10
+Status: Stable --> Unstable

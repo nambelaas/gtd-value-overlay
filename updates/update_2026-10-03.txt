@@ -1,0 +1,114 @@
+LEADERBOARD
+Rose Royale
+Value: 1.6k+ --> 1.5k+
+Demand: 4.5/10 --> 3.5/10
+Status: Slowly Dropping --> Unstable
+
+
+EXCLUSIVE
+Teslaflora
+Value: 8.8K+ --> 9.1K+
+Demand: 7/10 --> 8/10
+
+Transfiguration Flower
+Value: 7.55k+ --> 7.7k+
+Demand: 7.5/10 --> 7/10
+Status: Fluctuating --> Unstable
+
+Chicken Coop
+Value: 6k+ --> 5.75k+
+Demand: 7.5/10 --> 8/10
+
+Blossom Barrage
+Value: 5.03k+ --> 5.1k+
+Demand: 6/10 --> 4/10
+
+Garden Dragon Keep
+Value: 2.1K+ --> 2.25K+
+Demand: 7/10 --> 9/10
+
+Earth Dragon
+Value: 1.81k+ --> 2.25k+
+Demand: 7/10 --> 8/10
+
+Blinkbloom
+Value: 2.18k+ --> 2.2k+
+Demand: 7/10 --> 6/10
+Status: Stable --> Fluctuating
+
+Electrosprout
+Value: 2.3k+ --> 2.1k+
+Demand: 6.5/10 --> 5.5/10
+Status: Unstable --> Fluctuating
+
+Bird Fountain
+Value: 1.2K+ --> 1.35K+
+Demand: 6/10 --> 6.5/10
+Status: Fluctuating --> Slowly Rising
+
+Scopeleaf
+Value: 1.25k+ --> 1.1k+
+
+Mortarfern
+Value: N/A --> 1.05k+
+Demand: N/A --> 4.5/10
+Status: N/A --> Unstable
+
+Shockshroom
+Value: 520+ --> 805+
+Status: Fluctuating --> Unstable
+
+Chronorchid
+Value: N/A --> 730+
+Demand: N/A --> 4.5/10
+Status: N/A --> Unstable
+
+Surge Root
+Value: 480+ --> 525+
+Status: Slowly Dropping --> Fluctuating
+
+Starbud
+Value: 530+ --> 520+
+Demand: 5.5/10 --> 4/10
+
+Hydrobloom Cannon
+Value: 505+ --> 465+
+
+Egg Basketstem
+Demand: 7.5/10 --> 6.5/10
+
+
+GODLY
+Bunny Burrow
+Value: 12.87k+ --> 13k+
+Demand: 7/10 --> 8.5/10
+Status: Fluctuating --> Unstable
+
+Chomp Man
+Value: 5.64k+ --> 5.6k+
+Status: Unstable --> Stable
+
+Winterray Flower
+Value: 5.1k+ --> 5.2k+
+Demand: 2.5/10 --> 3/10
+
+Sea Dragon
+Value: 3.22k+ --> 3.45k+
+Demand: 6/10 --> 5/10
+
+Overlord Stem
+Value: 2.5k+ --> 2.55k+
+
+Ghost Shroom
+Value: 2.35k+ --> 2.25k+
+Demand: 7/10 --> 8.5/10
+Status: Slowly Rising --> Unstable
+
+Beehive
+Value: 980+ --> 1k+
+Demand: 7.5/10 --> 6/10
+
+Lucky Block Clover
+Value: 405+ --> 480+
+Demand: 3/10 --> 4.5/10
+Status: Stable --> Fluctuating

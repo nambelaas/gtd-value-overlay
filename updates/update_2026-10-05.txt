@@ -1,0 +1,53 @@
+EXCLUSIVE
+Corrupted Stem
+Value: 7.85k+ --> 8.9k+
+Status: Stable --> Slowly Rising
+
+Egg Plantinum
+Value: 3.55k+ --> 3.75k+
+Demand: 8/10 --> 8.5/10
+
+Spellstem
+Value: 1.35K+ --> 1.3K+
+Demand: 7/10 --> 6.5/10
+Status: Fluctuating --> Unstable
+
+1st Bloomday Cake
+Value: 1.2k+ --> 1.4k+
+Demand: 6.5/10 --> 7/10
+
+Treasure Trap
+Value: 1.02k+ --> 1.1k+
+Demand: 6/10 --> 4/10
+Status: Slowly Rising --> Fluctuating
+
+Ampliflora
+Value: 665+ --> 495+
+Demand: 4/10 --> 5.5/10
+Status: Unstable --> Fluctuating
+
+Voidanium
+Value: 585+ --> 630+
+
+Drainroot
+Value: 520+ --> 550+
+Demand: 6/10 --> 4/10
+Status: Unstable --> Fluctuating
+
+Auranji
+Value: 510+ --> 500+
+Demand: 7/10 --> 4/10
+Status: Fluctuating --> Stable
+
+
+GODLY
+Sorcerer's Stem
+Value: 10.2k+ --> 9.5k+
+
+Subzero Stem
+Value: 8.98k+ --> 9.3k+
+
+Dual Stemstorm
+Value: 480+ --> 425+
+Demand: 4/10 --> 3.5/10
+Status: Stable --> Fluctuating

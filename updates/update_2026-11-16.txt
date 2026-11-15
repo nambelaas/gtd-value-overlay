@@ -1,0 +1,61 @@
+EXCLUSIVE
+Corrupted Stem
+Value: 12.6k+ --> 12.3k+
+Demand: 6.5/10 --> 8.5/10
+
+Transfiguration Flower
+Value: 10.65k+ --> 12.15k+
+Demand: 8/10 --> 8.5/10
+
+Garden Dragon Keep
+Value: 7.6K+ --> 7.55K+
+
+Egg Basketstem
+Value: 5.25k+ --> 4.95k+
+Demand: 7/10 --> 6.5/10
+
+Electric Beetroot
+Value: 1.85K+ --> 2.2K+
+Demand: 7.5/10 --> 8.5/10
+
+Festive Glowthorn
+Value: 1.4k+ --> 1.6k+
+
+Parasite Plant
+Value: 1.2k+ --> 1.35k+
+Demand: 7/10 --> 7.5/10
+Status: Unstable --> Fluctuating
+
+Petriflora
+Value: 1.4k+ --> 1.25k+
+Demand: 5.5/10 --> 3/10
+Status: Unstable --> Fluctuating
+
+Spellstem
+Value: 1.4K+ --> 1.2K+
+Demand: 4.5/10 --> 6/10
+
+Signal Stem
+Value: 730+ --> 710+
+Status: Unstable --> Fluctuating
+
+Plasma Stem
+Value: 345+ --> 375+
+Demand: 3.5/10 --> 1/10
+
+
+GODLY
+Subzero Stem
+Value: 11k+ --> 11.25k+
+Demand: 6/10 --> 7.5/10
+Status: Slowly Rising --> Fluctuating
+
+Sorcerer's Stem
+Value: 9.75k+ --> 10.2k+
+Demand: 6.5/10 --> 8/10
+Status: Unstable --> Stable
+
+Dual Stemstorm
+Value: 425+ --> 445+
+Demand: 3.5/10 --> 1/10
+Status: Fluctuating --> Stable

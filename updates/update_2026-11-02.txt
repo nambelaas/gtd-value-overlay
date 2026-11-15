@@ -1,0 +1,56 @@
+EXCLUSIVE
+Infectia
+Value: 28k+ --> 30.45k+
+Demand: 7.5/10 --> 8/10
+Status: Fluctuating --> Rising
+
+Chicken Coop
+Value: 5.85k+ --> 6.05k+
+Demand: 8.5/10 --> 8/10
+
+Egg Plantinum
+Value: 5.35k+ --> 5.7k+
+Demand: 9/10 --> 8/10
+
+Egg Basketstem
+Value: 5k+ --> 5.25k+
+Demand: 6/10 --> 7/10
+
+Earth Dragon
+Value: 2.9k+ --> 3k+
+Demand: 7.5/10 --> 8/10
+Status: Slowly Rising --> Unstable
+
+Strongest Punch Potato
+Value: 2.5k+ --> 2.7k+
+Demand: 8/10 --> 6.5/10
+
+1st Bloomday Cake
+Value: 1.55k+ --> 1.65k+
+
+Scopeleaf
+Value: 900+ --> 865+
+
+Inversia
+Value: 580+ --> 480+
+Demand: 4/10 --> 2/10
+Status: Unstable --> Slowly Dropping
+
+Firecore Stem
+Value: 215+ --> 375+
+Demand: 3.5/10 --> 1.5/10
+Status: Stable --> Fluctuating
+
+Dark Shardpetal
+Value: 250+ --> 280+
+Demand: 4/10 --> 5/10
+
+
+GODLY
+Ghost Shroom
+Value: 2.5k+ --> 2.55k+
+Demand: 8/10 --> 7.5/10
+
+Lucky Block Clover
+Value: 480+ --> 625+
+Demand: 4.5/10 --> 4/10

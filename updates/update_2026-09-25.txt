@@ -1,0 +1,60 @@
+EXCLUSIVE
+Infectia
+Value: 22.75k+ --> 24.95k+
+Demand: 7/10 --> 8/10
+
+Egg Plantinum
+Value: 2.75k+ --> 3.2k+
+Demand: 6.5/10 --> 7.5/10
+Status: Rising --> Unstable
+
+Watering Can
+Value: 2K+ --> 2.84K+
+Demand: 8/10 --> 7/10
+
+Clusterplant
+Value: 1.8K+ --> 1.95K+
+Demand: 8/10 --> 6.5/10
+
+Scopeleaf
+Value: 1.43k+ --> 1.29k+
+Demand: 7/10 --> 6/10
+Status: Unstable --> Fluctuating
+
+Triangrove
+Value: 955+ --> 900+
+Demand: 6.5/10 --> 5.5/10
+
+Slay Stem
+Value: 1k+ --> 735+
+Demand: 5/10 --> 3/10
+
+Medusa Flower
+Value: 495+ --> 410+
+Demand: 4/10 --> 3.5/10
+
+Trithorn
+Value: N/A --> 395+
+Demand: N/A --> 4/10
+Status: N/A --> Unstable
+
+Cryolesia
+Value: 435+ --> 390+
+Demand: 4.5/10 --> 5/10
+
+
+GODLY
+Bunny Burrow
+Value: 12.57k+ --> 12.87k+
+Status: Rising --> Fluctuating
+
+Subzero Stem
+Value: 8.8k+ --> 8.98k+
+Demand: 6/10 --> 6.5/10
+
+Chomp Man
+Value: 5.8k+ --> 5.64k+
+
+Ghost Shroom
+Value: 1.8k+ --> 2k+
+Demand: 7/10 --> 8/10

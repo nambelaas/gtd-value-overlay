@@ -1,0 +1,59 @@
+EXCLUSIVE
+Shockolateflora
+Value: 4.5k+ --> 4.2k+
+
+Clusterplant
+Value: 2.15K+ --> 2.3K+
+Demand: 6/10 --> 6.5/10
+
+Electrosprout
+Value: 2.1k+ --> 2.15k+
+Demand: 5.5/10 --> 6.5/10
+
+Spellstem
+Value: 1.35K+ --> 1.4K+
+Demand: 5.5/10 --> 4.5/10
+
+Sprinklord
+Value: 1.25k+ --> 1.4k+
+Demand: 6/10 --> 4/10
+
+Regeneration Flower
+Value: 1.25K+ --> 1.4K+
+Demand: 5/10 --> 3.5/10
+
+Frost Golem
+Value: 1.18K+ --> 1.2K+
+Demand: 5/10 --> 4/10
+
+Shockshroom
+Value: 805+ --> 760+
+Demand: 5.5/10 --> 4.5/10
+
+Voidanium
+Value: 630+ --> 730+
+Demand: 6/10 --> 5/10
+
+
+GODLY
+Subzero Stem
+Value: 10.7k+ --> 11k+
+Demand: 5.5/10 --> 6/10
+
+Overlord Stem
+Value: 2.5k+ --> 2.75k+
+
+Ghost Shroom
+Value: 2.45k+ --> 2.5k+
+Demand: 7.5/10 --> 8/10
+Status: Unstable --> Fluctuating
+
+Beehive
+Value: 1k+ --> 1.1k+
+Demand: 6/10 --> 7/10
+
+
+ITEM
+x2 Fertilizer
+Value: 3.4k+ --> 3.25k+
+Demand: 7/10 --> 5/10

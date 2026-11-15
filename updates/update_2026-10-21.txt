@@ -1,0 +1,76 @@
+EXCLUSIVE
+Budyguards
+Value: 11.75k+ --> 12.3k+
+Demand: 9/10 --> 7.5/10
+
+Festive Garden Warbell
+Value: 10.2k+ --> 11k+
+Demand: 8/10 --> 7/10
+
+Transfiguration Flower
+Value: 7.45k+ --> 7.15k+
+Demand: 8/10 --> 9/10
+Status: Unstable --> Fluctuating
+
+Garden Dragon Keep
+Value: 4.75K+ --> 5.7K+
+Status: Rising --> Inflated
+
+Black Clover
+Value: 1.9K+ --> 2.05K+
+
+Shockfrost Sprout
+Demand: 8/10 --> 7.5/10
+Status: Unstable --> Fluctuating
+
+Electric Beetroot
+Value: 1.4K+ --> 1.85K+
+Demand: 6/10 --> 7.5/10
+Status: Unstable --> Slowly Rising
+
+Dual Bellflower
+Value: 1.2K+ --> 1.4K+
+Demand: 4.5/10 --> 4/10
+
+Festive Glowthorn
+Value: 1.15k+ --> 1.25k+
+Demand: 6/10 --> 8/10
+Status: Fluctuating --> Unstable
+
+Pushpetal
+Value: N/A --> 1.2k+
+Demand: N/A --> 6.5/10
+Status: Stable --> Unstable
+
+Graviflora
+Value: 1.05k+ --> 1k+
+Demand: 5/10 --> 5.5/10
+Status: Unstable --> Fluctuating
+
+Ice Dragon
+Value: 1k+ --> 965+
+Status: Slowly Rising --> Unstable
+
+Inversia
+Value: N/A --> 580+
+Demand: N/A --> 4/10
+Status: Stable --> Unstable
+
+Triangrove
+Value: 840+ --> 740+
+Demand: 5/10 --> 7/10
+
+Slay Stem
+Value: 565+ --> 575+
+Demand: 4/10 --> 2/10
+
+Ampliflora
+Value: 495+ --> 515+
+Demand: 5.5/10 --> 3.5/10
+
+
+GODLY
+Prismleaf
+Value: 28.35k+ --> 27.8k+
+Demand: 4.5/10 --> 4/10
+Status: Inflated --> Unstable

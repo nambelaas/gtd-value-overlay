@@ -1,0 +1,72 @@
+LEADERBOARD
+Masters Banana Peel
+Value: 4.4k+ --> 8.5k+
+Demand: 4/10 --> 1.5/10
+Status: Outdated --> Unstable
+
+
+EXCLUSIVE
+Holographic Clover
+Value: 11k+ --> 11.25k+
+Demand: 7/10 --> 8/10
+Status: Inflated --> Unstable
+
+Garden Dragon Keep
+Value: 6.95K+ --> 7.1K+
+Status: Inflated --> Unstable
+
+Soulshard Stem
+Value: N/A --> 5.85k+
+Demand: N/A --> 10/10
+Status: N/A --> Inflated
+
+Shockfrost Sprout
+Value: 1.7k+ --> 1.85k+
+Demand: 7.5/10 --> 7/10
+
+Star Fruit
+Value: 520+ --> 1.05k+
+Demand: 4.5/10 --> 5.5/10
+
+Ghost Lily
+Value: N/A --> 950+
+Demand: N/A --> 6.5/10
+Status: N/A --> Unstable
+
+Parasite Plant
+Value: 790+ --> 740+
+Demand: 5.5/10 --> 4.5/10
+
+Frostshade
+Value: 250+ --> 455+
+Demand: 1.5/10 --> 2.5/10
+
+Dream Petal
+Value: 210+ --> 420+
+Demand: 2.5/10 --> 3/10
+Status: Unstable --> Fluctuating
+
+Infinity Petal
+Value: 130+ --> 370+
+
+Rocketroot
+Value: 190+ --> 290+
+Demand: 3.5/10 --> 2/10
+Status: Fluctuating --> Stable
+
+Bloominator
+Value: 165+ --> 275+
+
+
+GODLY
+Bunny Burrow
+Value: 13.65k+ --> 14.55k+
+Demand: 8/10 --> 7.5/10
+
+Luckseer
+Value: 930+ --> 1.05k+
+
+Enchanting Rose
+Value: 260+ --> 360+
+Demand: 2/10 --> 2.5/10
+Status: Stable --> Fluctuating
