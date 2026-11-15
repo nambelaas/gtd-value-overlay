@@ -25,6 +25,9 @@ import numpy as np
 
 import re
 
+import os
+from concurrent.futures import ThreadPoolExecutor
+
 try:
     import pytesseract
 except ImportError:
@@ -47,6 +50,18 @@ ARROW_THRESHOLD = 0.70
 
 ACCEPT_VIEW = False   # True : selisih = kiri - kanan (kamu terima unit kiri, kasih unit kanan)
                      # False: selisih = kanan - kiri (kebalikannya)
+
+USE_GRAY = True     # False kalau ada unit yang tertukar atau salah deteksi
+_POOL = ThreadPoolExecutor(max_workers=max(2, (os.cpu_count() or 4) - 1))
+
+FRAME_DIFF = 3.0        # makin kecil makin sensitif terhadap perubahan layar
+REDETECT_EVERY = 3.0    # paksa deteksi ulang tiap N detik sebagai pengaman
+
+THRESHOLD_GRAY = 0.85
+
+# Area jendela trade relatif terhadap window Roblox: (kiri, atas, kanan, bawah), 0..1
+# Angka ini dihitung dari screenshot-mu. None = scan seluruh window
+ROI = (0.10, 0.17, 0.87, 0.83)
 
 
 # ---------------------------------------------------------------- templates
@@ -83,25 +98,36 @@ def load_values():
 
 
 # ---------------------------------------------------------------- detection
+def _match_one(small, name, fw, fh, variants):
+    found = []
+    for tpl, s, ox, oy in variants:
+        if USE_GRAY:
+            tpl = cv2.cvtColor(tpl, cv2.COLOR_BGR2GRAY)
+        th, tw = tpl.shape[:2]
+        if small.shape[0] < th or small.shape[1] < tw:
+            continue
+        res = cv2.matchTemplate(small, tpl, cv2.TM_CCOEFF_NORMED)
+        thr = THRESHOLD_GRAY if USE_GRAY else THRESHOLD
+        for _ in range(20):
+            _, mx, _, loc = cv2.minMaxLoc(res)
+            if mx < thr:
+                break
+            x, y = loc
+            found.append((mx, name, x - ox * SCALE * s, y - oy * SCALE * s,
+                          fw * SCALE * s, fh * SCALE * s))
+            x0, y0 = max(0, x - tw // 2), max(0, y - th // 2)
+            res[y0: y + th // 2 + 1, x0: x + tw // 2 + 1] = -1
+    return found
+
+
 def detect(frame_bgr, templates):
-    """Return list of (name, x, y, w, h) dalam pixel fisik layar."""
+    """Return list of (name, x, y, w, h) dalam pixel fisik."""
     small = cv2.resize(frame_bgr, None, fx=SCALE, fy=SCALE, interpolation=cv2.INTER_AREA)
-    found = []  # (score, name, bx, by, fw, fh) di koordinat small, bx/by = pojok kiri atas ikon penuh
-    for name, fw, fh, variants in templates:
-        for tpl, s, ox, oy in variants:
-            th, tw = tpl.shape[:2]
-            if small.shape[0] < th or small.shape[1] < tw:
-                continue
-            res = cv2.matchTemplate(small, tpl, cv2.TM_CCOEFF_NORMED)
-            for _ in range(20):
-                _, mx, _, loc = cv2.minMaxLoc(res)
-                if mx < THRESHOLD:
-                    break
-                x, y = loc
-                found.append((mx, name, x - ox * SCALE * s, y - oy * SCALE * s,
-                              fw * SCALE * s, fh * SCALE * s))
-                x0, y0 = max(0, x - tw // 2), max(0, y - th // 2)
-                res[y0: y + th // 2 + 1, x0: x + tw // 2 + 1] = -1
+    if USE_GRAY:
+        small = cv2.cvtColor(small, cv2.COLOR_BGR2GRAY)
+    found = []
+    for part in _POOL.map(lambda t: _match_one(small, *t), templates):
+        found += part
 
     found.sort(key=lambda f: -f[0])
     kept = []
@@ -109,7 +135,6 @@ def detect(frame_bgr, templates):
         if any(abs(bx - k[2]) < fw * 0.5 and abs(by - k[3]) < fh * 0.5 for k in kept):
             continue
         kept.append((sc, name, bx, by, fw, fh))
-
     return [(name, bx / SCALE, by / SCALE, fw / SCALE, fh / SCALE)
             for sc, name, bx, by, fw, fh in kept]
 
@@ -204,21 +229,38 @@ def run_overlay():
         def run(self):
             last = []
             with mss.mss() as sct:
+                ref, cached, t_det = None, [], 0.0
                 while True:
                     t0 = time.time()
                     region = get_roblox_region()
                     items, pills = [], []
                     if region:
                         frame = np.array(sct.grab(region))[:, :, :3]
+                        t0c = time.time()
+                        frame = np.array(sct.grab(region))[:, :, :3]
+                        t1c = time.time()
+                        t2c = time.time()
+                        # print(f"capture {t1c-t0c:.2f}s | detect {t2c-t1c:.2f}s | sisanya {time.time()-t2c:.2f}s | {len(templates)} template")
                         scale = frame.shape[1] / region["width"]
                         k = scale * qt_ratio                      # pixel fisik -> koordinat overlay
+                        sub, ox, oy = crop_roi(frame)
+                        g = cv2.cvtColor(cv2.resize(sub, (192, 108), interpolation=cv2.INTER_AREA),
+                                         cv2.COLOR_BGR2GRAY)
+                        changed = (ref is None or ref.shape != g.shape
+                                   or cv2.absdiff(g, ref).mean() > FRAME_DIFF
+                                   or time.time() - t_det > REDETECT_EVERY)
+                        ref = g
+                        if changed:
+                            cached = [(n, x + ox, y + oy, w, h) for n, x, y, w, h in detect(sub, templates)]
+                            t_det = time.time()
+                        dets = cached
 
                         def conv(px, py):
                             return ((region["left"] + px / scale) / qt_ratio - geo.x(),
                                     (region["top"] + py / scale) / qt_ratio - geo.y())
 
                         current, units = [], []
-                        for name, x, y, w, h in detect(frame, templates):
+                        for name, x, y, w, h in dets:
                             raw = read_qty(frame, x, y, w, h)
                             prev = next((p for p in last
                                          if p[0] == name and abs(p[1] - x) < w * 0.3
@@ -236,9 +278,10 @@ def run_overlay():
                             diff = (lt - rt) if ACCEPT_VIEW else (rt - lt)
                             pills.append((fmt_total(lt, lu), fmt_total(rt, ru),
                                           round(diff, 2), bool(lu or ru), px, py))
+                    else: ref = None
                     self.result.emit(items, pills)
                     time.sleep(max(0.05, SCAN_INTERVAL - (time.time() - t0)))
-
+    
     class Overlay(QtWidgets.QWidget):
         def __init__(self):
             super().__init__()
@@ -319,7 +362,7 @@ def run_overlay():
     ov = Overlay()
     ov.show()
     ov.mac_always_visible()
-    
+
     worker = Worker()
     worker.result.connect(ov.update_items)
     worker.start()
@@ -361,7 +404,6 @@ def take_shot():
         img = np.array(sct.grab(region or sct.monitors[1]))[:, :, :3]
     cv2.imwrite(str(BASE / "screenshot.png"), img)
     print("Tersimpan: screenshot.png")
-
 
 def crop_tool(path):
     TEMPLATE_DIR.mkdir(exist_ok=True)
@@ -455,6 +497,13 @@ def label_text(base, qty):
         return f"{total:g}"
     except ValueError:
         return f"{base} × {qty}"
+
+def crop_roi(frame):
+    if ROI is None:
+        return frame, 0, 0
+    H, W = frame.shape[:2]
+    x0, y0, x1, y1 = int(W * ROI[0]), int(H * ROI[1]), int(W * ROI[2]), int(H * ROI[3])
+    return frame[y0:y1, x0:x1], x0, y0
 
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "shot":
