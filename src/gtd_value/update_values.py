@@ -22,8 +22,8 @@ import shutil
 import sys
 from datetime import date, datetime
 from pathlib import Path
+from paths import VALUES_FILE
 
-VALUES_FILE = Path(__file__).parent / "values.json"
 STORE_IN_K = True   # True : simpan dalam ribuan (30.45k -> 30.45 ; 865 -> 0.865)
                     # False: simpan angka penuh   (30.45k -> 30450 ; 865 -> 865)
 
