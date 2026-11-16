@@ -6,4 +6,4 @@ pytesseract
 pyperclip
 pyobjc-framework-Quartz; sys_platform == "darwin"
 pywin32; sys_platform == "win32"
-pyobjc-framework-Cocoa
+pyobjc-framework-Cocoa; sys_platform == "darwin"
