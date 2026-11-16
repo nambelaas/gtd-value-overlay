@@ -4,3 +4,5 @@ __pycache__/
 debug_qty.png
 data/values.json.bak
 # templates/
+logs/
+.run

@@ -27,8 +27,15 @@ import re
 
 import os
 from concurrent.futures import ThreadPoolExecutor
+import logging
+import signal
+from logging.handlers import RotatingFileHandler
 
-from paths import TEMPLATE_DIR, VALUES_FILE, ARROW_FILE, DATA_DIR, DOCS_DIR
+from paths import TEMPLATE_DIR, VALUES_FILE, ARROW_FILE, DATA_DIR, DOCS_DIR, LOG_DIR
+
+from pathlib import Path
+
+import autostart
 
 try:
     import pytesseract
@@ -59,6 +66,7 @@ THRESHOLD_GRAY = 0.85
 # Area jendela trade relatif terhadap window Roblox: (kiri, atas, kanan, bawah), 0..1
 # Angka ini dihitung dari screenshot-mu. None = scan seluruh window
 ROI = (0.10, 0.17, 0.87, 0.83)
+log = logging.getLogger("gtd")
 
 
 # ---------------------------------------------------------------- templates
@@ -208,16 +216,24 @@ def run_overlay():
     from PyQt5 import QtCore, QtGui, QtWidgets
     from PyQt5.QtCore import Qt
 
+    setup_logging()
     templates = load_templates()
     values = load_values()
     arrow_tpl = load_arrow()
     if not templates:
-        print("Folder templates/ masih kosong. Jalankan: python gtd_value.py shot  lalu  crop")
+        log.warning("Folder templates/ masih kosong. Jalankan: python gtd_value.py shot  lalu  crop")
         return
     if arrow_tpl is None:
-        print("[INFO] arrow.png belum ada -> total per sisi nonaktif (crop panah dengan nama 'arrow')")
+        log.info("[INFO] arrow.png belum ada -> total per sisi nonaktif (crop panah dengan nama 'arrow')")
 
     app = QtWidgets.QApplication(sys.argv)
+    signal.signal(signal.SIGINT, signal.SIG_DFL)      # Ctrl+C di terminal tetap bisa menghentikan app
+    app.setQuitOnLastWindowClosed(False)              # app hidup walau tidak ada jendela biasa
+
+    lock = QtCore.QLockFile(os.path.join(QtCore.QDir.tempPath(), "gtd_value_overlay.lock"))
+    if not lock.tryLock(200):
+        log.warning("Instance lain sudah berjalan. Keluar.")
+        return
     screen = app.primaryScreen()
     geo = screen.geometry()
     qt_ratio = screen.devicePixelRatio() if sys.platform == "win32" else 1.0
@@ -225,59 +241,71 @@ def run_overlay():
     class Worker(QtCore.QThread):
         result = QtCore.pyqtSignal(list, list)
 
+        def __init__(self):
+            super().__init__()
+            self.running, self.paused = True, False
+            self.last, self.ref, self.cached, self.t_det = [], None, [], 0.0
+
+        def scan(self, sct):
+            region = get_roblox_region()
+            items, pills = [], []
+            if not region:
+                self.ref = None
+                return items, pills
+            frame = np.array(sct.grab(region))[:, :, :3]
+            scale = frame.shape[1] / region["width"]
+            k = scale * qt_ratio
+
+            def conv(px, py):
+                return ((region["left"] + px / scale) / qt_ratio - geo.x(),
+                        (region["top"] + py / scale) / qt_ratio - geo.y())
+
+            sub, ox, oy = crop_roi(frame)
+            g = cv2.cvtColor(cv2.resize(sub, (192, 108), interpolation=cv2.INTER_AREA),
+                             cv2.COLOR_BGR2GRAY)
+            changed = (self.ref is None or self.ref.shape != g.shape
+                       or cv2.absdiff(g, self.ref).mean() > FRAME_DIFF
+                       or time.time() - self.t_det > REDETECT_EVERY)
+            self.ref = g
+            if changed:
+                self.cached = [(n, x + ox, y + oy, w, h) for n, x, y, w, h in detect(sub, templates)]
+                self.t_det = time.time()
+
+            current, units = [], []
+            for name, x, y, w, h in self.cached:
+                raw = read_qty(frame, x, y, w, h)
+                prev = next((p for p in self.last
+                             if p[0] == name and abs(p[1] - x) < w * 0.3
+                             and abs(p[2] - y) < h * 0.3), None)
+                qty = raw if (prev and prev[3] == raw) else 1
+                current.append((name, x, y, raw))
+                units.append((name, qty, x, y, w, h))
+                lx, ly = conv(x, y)
+                items.append((name, qty, lx, ly, w / k, h / k))
+            self.last = current
+
+            for lt, lu, rt, ru, ax, ay in build_trades(units, detect_arrows(frame, arrow_tpl), values):
+                px, py = conv(ax, ay)
+                diff = (lt - rt) if ACCEPT_VIEW else (rt - lt)
+                pills.append((fmt_total(lt, lu), fmt_total(rt, ru),
+                              round(diff, 2), bool(lu or ru), px, py))
+            return items, pills
+
         def run(self):
-            last = []
             with mss.mss() as sct:
-                ref, cached, t_det = None, [], 0.0
-                while True:
+                while self.running:
                     t0 = time.time()
-                    region = get_roblox_region()
-                    items, pills = [], []
-                    if region:
-                        frame = np.array(sct.grab(region))[:, :, :3]
-                        t0c = time.time()
-                        frame = np.array(sct.grab(region))[:, :, :3]
-                        t1c = time.time()
-                        t2c = time.time()
-                        # print(f"capture {t1c-t0c:.2f}s | detect {t2c-t1c:.2f}s | sisanya {time.time()-t2c:.2f}s | {len(templates)} template")
-                        scale = frame.shape[1] / region["width"]
-                        k = scale * qt_ratio                      # pixel fisik -> koordinat overlay
-                        sub, ox, oy = crop_roi(frame)
-                        g = cv2.cvtColor(cv2.resize(sub, (192, 108), interpolation=cv2.INTER_AREA),
-                                         cv2.COLOR_BGR2GRAY)
-                        changed = (ref is None or ref.shape != g.shape
-                                   or cv2.absdiff(g, ref).mean() > FRAME_DIFF
-                                   or time.time() - t_det > REDETECT_EVERY)
-                        ref = g
-                        if changed:
-                            cached = [(n, x + ox, y + oy, w, h) for n, x, y, w, h in detect(sub, templates)]
-                            t_det = time.time()
-                        dets = cached
-
-                        def conv(px, py):
-                            return ((region["left"] + px / scale) / qt_ratio - geo.x(),
-                                    (region["top"] + py / scale) / qt_ratio - geo.y())
-
-                        current, units = [], []
-                        for name, x, y, w, h in dets:
-                            raw = read_qty(frame, x, y, w, h)
-                            prev = next((p for p in last
-                                         if p[0] == name and abs(p[1] - x) < w * 0.3
-                                         and abs(p[2] - y) < h * 0.3), None)
-                            qty = raw if (prev and prev[3] == raw) else 1
-                            current.append((name, x, y, raw))
-                            units.append((name, qty, x, y, w, h))
-                            lx, ly = conv(x, y)
-                            items.append((name, qty, lx, ly, w / k, h / k))
-                        last = current
-
-                        for lt, lu, rt, ru, ax, ay in build_trades(
-                                units, detect_arrows(frame, arrow_tpl), values):
-                            px, py = conv(ax, ay)
-                            diff = (lt - rt) if ACCEPT_VIEW else (rt - lt)
-                            pills.append((fmt_total(lt, lu), fmt_total(rt, ru),
-                                          round(diff, 2), bool(lu or ru), px, py))
-                    else: ref = None
+                    if self.paused:
+                        time.sleep(0.2)
+                        continue
+                    try:
+                        items, pills = self.scan(sct)
+                    except Exception:
+                        log.exception("Scan gagal, mencoba lagi")
+                        items, pills = [], []
+                        time.sleep(1)
+                    if self.paused:                      # dijeda saat scan berjalan: jangan gambar hasilnya
+                        continue
                     self.result.emit(items, pills)
                     time.sleep(max(0.05, SCAN_INTERVAL - (time.time() - t0)))
     
@@ -361,11 +389,104 @@ def run_overlay():
     ov = Overlay()
     ov.show()
     ov.mac_always_visible()
-
     worker = Worker()
     worker.result.connect(ov.update_items)
     worker.start()
-    print(f"Jalan. {len(templates)} template, {len(values)} value. Ctrl+C untuk berhenti.")
+
+    # ---- hot-reload values.json (cek tiap 1 detik, dict yang sama dipakai overlay dan worker)
+    state = {"mtime": VALUES_FILE.stat().st_mtime if VALUES_FILE.exists() else 0}
+
+    def reload_values(force=False):
+        try:
+            m = VALUES_FILE.stat().st_mtime
+        except OSError:
+            return
+        if not force and m == state["mtime"]:
+            return
+        try:
+            new = load_values()
+        except Exception:
+            log.exception("Gagal membaca values.json, dicoba lagi")   # mtime tidak diperbarui -> coba lagi
+            return
+        values.update(new)
+        for key in set(values) - set(new):                           # hapus unit yang sudah tidak ada
+            del values[key]
+        state["mtime"] = m
+        log.info("values.json dimuat ulang (%d unit)", len(values))
+        ov.update()
+
+    reload_timer = QtCore.QTimer()
+    reload_timer.timeout.connect(reload_values)
+    reload_timer.start(1000)
+
+    # ---- tray icon
+    def make_icon():
+        pm = QtGui.QPixmap(64, 64)
+        pm.fill(Qt.transparent)
+        p = QtGui.QPainter(pm)
+        p.setRenderHint(QtGui.QPainter.Antialiasing)
+        p.setPen(Qt.NoPen)
+        p.setBrush(QtGui.QColor(255, 215, 0))
+        p.drawEllipse(4, 4, 56, 56)
+        p.setPen(QtGui.QColor(30, 30, 30))
+        p.setFont(QtGui.QFont("Arial", 30, QtGui.QFont.Bold))
+        p.drawText(pm.rect(), Qt.AlignCenter, "V")
+        p.end()
+        return QtGui.QIcon(pm)
+
+    def open_dir(path):
+        QtGui.QDesktopServices.openUrl(QtCore.QUrl.fromLocalFile(str(path)))
+
+    def toggle_pause(checked):
+        worker.paused = checked
+        act_pause.setText("Lanjutkan" if checked else "Jeda")
+        if checked:
+            ov.update_items([], [])
+        log.info("Overlay %s", "dijeda" if checked else "dilanjutkan")
+    
+    def toggle_autostart(checked):
+        try:
+            if checked:
+                autostart.enable(Path(__file__).resolve())
+            else:
+                autostart.disable()
+            log.info("Auto-start %s", "aktif" if checked else "nonaktif")
+        except Exception:
+            log.exception("Gagal mengubah auto-start")
+            act_auto.blockSignals(True)
+            act_auto.setChecked(autostart.is_enabled())      # kembalikan sesuai kondisi sebenarnya
+            act_auto.blockSignals(False)
+            tray.showMessage("GTD Value", "Gagal mengubah auto-start. Cek log.")
+
+    def quit_app():
+        worker.running = False
+        worker.wait(3000)
+        tray.hide()
+        app.quit()
+
+    menu = QtWidgets.QMenu()
+    act_pause = menu.addAction("Jeda")
+    act_pause.setCheckable(True)
+    act_pause.toggled.connect(toggle_pause)
+    menu.addAction("Muat ulang values").triggered.connect(lambda: reload_values(force=True))
+    menu.addAction("Buka folder data").triggered.connect(lambda: open_dir(DATA_DIR))
+    menu.addAction("Buka folder log").triggered.connect(lambda: open_dir(LOG_DIR))
+    act_auto = menu.addAction("Jalan otomatis saat login")
+    act_auto.setCheckable(True)
+    act_auto.setChecked(autostart.is_enabled())
+    act_auto.toggled.connect(toggle_autostart)
+    menu.addSeparator()
+    menu.addAction("Keluar").triggered.connect(quit_app)
+
+    tray = QtWidgets.QSystemTrayIcon(make_icon(), app)
+    if QtWidgets.QSystemTrayIcon.isSystemTrayAvailable():
+        tray.setToolTip("GTD Value Overlay")
+        tray.setContextMenu(menu)
+        tray.show()
+    else:
+        log.warning("System tray tidak tersedia. Berhenti lewat Ctrl+C di terminal.")
+
+    log.info("Jalan. %d template, %d value.", len(templates), len(values))
     sys.exit(app.exec_())
 
 
@@ -507,6 +628,19 @@ def crop_roi(frame):
     H, W = frame.shape[:2]
     x0, y0, x1, y1 = int(W * ROI[0]), int(H * ROI[1]), int(W * ROI[2]), int(H * ROI[3])
     return frame[y0:y1, x0:x1], x0, y0
+
+def setup_logging():
+    LOG_DIR.mkdir(exist_ok=True)
+    fmt = logging.Formatter("%(asctime)s %(levelname)s %(message)s")
+    handlers = [RotatingFileHandler(LOG_DIR / "gtd_value.log", maxBytes=1_000_000,
+                                    backupCount=3, encoding="utf-8")]
+    if sys.stderr:                                   # tidak ada saat dijalankan tanpa console
+        handlers.append(logging.StreamHandler())
+    for h in handlers:
+        h.setFormatter(fmt)
+        log.addHandler(h)
+    log.setLevel(logging.INFO)
+    sys.excepthook = lambda *a: log.critical("Error tak tertangani", exc_info=a)
 
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "shot":
