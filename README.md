@@ -4,7 +4,7 @@ Overlay value unit untuk menu trade **Garden Tower Defense** (Roblox). Program s
 
 Program ini **hanya membaca layar** (screenshot). Tidak ada injeksi atau modifikasi client Roblox.
 
-![screenshot](docs/screenshot.png)
+![screenshot](docs/sample.png)
 
 ## Fitur
 
