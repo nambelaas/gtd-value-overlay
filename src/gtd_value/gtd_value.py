@@ -28,14 +28,12 @@ import re
 import os
 from concurrent.futures import ThreadPoolExecutor
 
+from paths import TEMPLATE_DIR, VALUES_FILE, ARROW_FILE, DATA_DIR, DOCS_DIR
+
 try:
     import pytesseract
 except ImportError:
     pytesseract = None
-
-BASE = Path(__file__).parent
-TEMPLATE_DIR = BASE / "templates"
-VALUES_FILE = BASE / "values.json"
 
 THRESHOLD = 0.75       # naikkan kalau salah deteksi, turunkan kalau banyak yang lolos
 SCAN_INTERVAL = 1.0    # detik
@@ -45,7 +43,6 @@ CENTER_CROP = 0.7      # ambil bagian tengah ikon, biar badge "x2" & border tida
 CROP = (0.10, 0.50, 0.90, 0.92)  # (x0, y0, x1, y1) pecahan ikon: bagian bawah, bebas badge
 DEBUG_QTY = False
 
-ARROW_FILE = BASE / "arrow.png"
 ARROW_THRESHOLD = 0.70
 
 ACCEPT_VIEW = False   # True : selisih = kiri - kanan (kamu terima unit kiri, kasih unit kanan)
@@ -88,6 +85,7 @@ def load_templates():
 
 
 def load_values():
+    DATA_DIR.mkdir(exist_ok=True)
     if not VALUES_FILE.exists():
         VALUES_FILE.write_text("{}", encoding="utf-8")
     data = json.loads(VALUES_FILE.read_text(encoding="utf-8"))
@@ -148,6 +146,7 @@ def parse_val(s):
 
 
 def load_arrow():
+    print(str(ARROW_FILE))
     if not ARROW_FILE.exists():
         return None
     img = cv2.imread(str(ARROW_FILE), cv2.IMREAD_COLOR)
@@ -402,11 +401,14 @@ def take_shot():
         print("Window Roblox tidak ketemu, pakai fullscreen.")
     with mss.mss() as sct:
         img = np.array(sct.grab(region or sct.monitors[1]))[:, :, :3]
-    cv2.imwrite(str(BASE / "screenshot.png"), img)
-    print("Tersimpan: screenshot.png")
+
+    DOCS_DIR.mkdir(exist_ok=True)
+    cv2.imwrite(str(DOCS_DIR / "screenshot.png"), img)
+    print("Tersimpan: docs/screenshot.png")
 
 def crop_tool(path):
     TEMPLATE_DIR.mkdir(exist_ok=True)
+    DOCS_DIR.mkdir(exist_ok=True)
     img = cv2.imread(path)
     if img is None:
         print("File tidak ditemukan")
@@ -421,7 +423,7 @@ def crop_tool(path):
             continue
         if name.lower() == "arrow":
             cv2.imwrite(str(ARROW_FILE), img[y: y + h, x: x + w])
-            print("Disimpan: arrow.png")
+            print("Disimpan: docs/arrow.png")
             continue
         out = TEMPLATE_DIR / f"{name}.png"
         n = 2
@@ -477,7 +479,8 @@ def read_qty(frame, x, y, w, h):
     img = 255 - big                                          # teks hitam, background putih
     img = cv2.copyMakeBorder(img, 30, 30, 30, 30, cv2.BORDER_CONSTANT, value=255)
     if DEBUG_QTY:
-        cv2.imwrite("debug_qty.png", img)
+        DOCS_DIR.mkdir(exist_ok=True)
+        cv2.imwrite(str(DOCS_DIR / "debug_qty.png"), img)
 
     txt = pytesseract.image_to_string(
         img, config="--psm 7 -c tessedit_char_whitelist=xX0123456789").strip()

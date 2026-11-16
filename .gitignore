@@ -1,1 +1,6 @@
-screenshot.png
+__pycache__/
+*.pyc
+.venv/
+debug_qty.png
+data/values.json.bak
+# templates/
