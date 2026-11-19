@@ -4,13 +4,13 @@ Overlay value unit untuk menu trade **Garden Tower Defense** (Roblox). Program s
 
 Program ini **hanya membaca layar** (screenshot). Tidak ada injeksi atau modifikasi client Roblox.
 
-![screenshot](docs/sample.png)
+![screenshot](docs/screenshot.png)
 
 ## Fitur
 
 - Value muncul di atas ikon unit secara otomatis
 - Scan **hanya window Roblox**, dan hanya area daftar trade (bukan dunia game)
-- Baca badge qty (`x6`) lewat OCR, value otomatis dikali qty
+- Baca badge qty (`x6`) lewat pencocokan bentuk huruf (tanpa OCR, tidak perlu instal apa pun), value otomatis dikali qty
 - Total value per sisi trade (**Punya** vs **Cari**) beserta selisih (hijau = untung, merah = rugi)
 - Deteksi cepat: grayscale, multi-thread, dan dilewati kalau layar tidak berubah
 - Overlay tetap tampil di atas Roblox walau window Roblox sedang fokus
@@ -24,10 +24,12 @@ gtd-value-overlay/
 │   └── gtd_value/
 │       ├── gtd_value.py       # program utama (overlay, tool shot & crop)
 │       ├── update_values.py   # parser post update Discord -> data/values.json
+│       ├── qty_digits.py      # baca badge qty (xN) lewat pencocokan bentuk huruf
 │       └── paths.py           # satu-satunya tempat definisi path folder
 ├── data/
 │   ├── values.json            # data value unit
-│   └── arrow.png              # template ikon panah ⇄ (untuk total per sisi)
+│   ├── arrow.png              # template ikon panah ⇄ (untuk total per sisi)
+│   └── glyphs/                # template huruf badge qty: x, 0-9
 ├── templates/                 # template ikon unit (dibuat sendiri lewat tool crop)
 ├── updates/                   # simpan tiap post update Discord di sini (file teks)
 ├── docs/
@@ -47,17 +49,13 @@ Semua path dihitung dari lokasi `paths.py` (`ROOT = parents[2]`), jadi program b
    pip install -r requirements.txt
    ```
 
-3. Install **Tesseract OCR** (untuk baca badge qty):
-   - Mac: `brew install tesseract`
-   - Windows: installer dari https://github.com/UB-Mannheim/tesseract/wiki (centang opsi tambah ke PATH)
-
-4. Library khusus OS (untuk mencari window Roblox dan menjaga overlay tetap tampil):
+3. Library khusus OS (untuk mencari window Roblox dan menjaga overlay tetap tampil):
    - Mac: `pip install pyobjc-framework-Quartz pyobjc-framework-Cocoa`
    - Windows: `pip install pywin32`
 
    Kalau `requirements.txt` sudah memuatnya (dengan penanda `sys_platform`), langkah ini otomatis ikut langkah 2.
 
-5. **Mac:** beri izin *Screen Recording* ke Terminal/IDE yang dipakai di System Settings > Privacy & Security.
+4. **Mac:** beri izin *Screen Recording* ke Terminal/IDE yang dipakai di System Settings > Privacy & Security.
 
 Semua perintah di bawah dijalankan dari **root repo**.
 
@@ -166,7 +164,6 @@ Konstanta di bagian atas `gtd_value.py`:
 | `SCAN_INTERVAL` | Jeda antar scan (detik). `0.3` cocok kalau deteksi dilewati saat layar diam |
 | `SCALES` | Tambah ke `(0.9, 1.0, 1.1)` kalau ukuran UI berubah-ubah (scan jadi lebih lambat) |
 | `ACCEPT_VIEW` | `True`: selisih = kiri - kanan. `False`: kebalikannya |
-| `DEBUG_QTY` | `True` menyimpan `debug_qty.png` dan mencetak hasil OCR badge, untuk debug |
 
 ## Troubleshooting
 
@@ -178,7 +175,7 @@ Konstanta di bagian atas `gtd_value.py`:
 | Unit di tepi daftar tidak dapat label | Area `ROI` terlalu sempit. Lebarkan sedikit |
 | Label nyasar di luar menu trade, atau di teks | False positive. Pastikan `ROI` terpasang, naikkan `THRESHOLD_GRAY`, atau set `USE_GRAY = False` |
 | Label `?` | Nama unit tidak ada di `data/values.json` atau ejaannya beda dengan nama template |
-| Qty `xN` tidak terbaca | Cek pesan `[PERINGATAN]` saat start (Tesseract belum terpasang). Set `DEBUG_QTY = True` dan cek `debug_qty.png`. Badge baru terkonfirmasi setelah 2 scan |
+| Qty `xN` tidak terbaca atau salah | Badge baru terkonfirmasi setelah 2 scan (~1 detik). Pastikan `data/glyphs/` berisi template huruf. Kalau satu angka sering salah, kirim crop badge-nya (`x8`, `x9`, dst.) untuk ditambahkan sebagai `<angka>__real.png` di `data/glyphs/`. Huruf yang ragu dianggap qty 1, bukan ditebak |
 | Total per sisi tidak muncul | `data/arrow.png` belum ada, atau turunkan `ARROW_THRESHOLD` ke 0.60 |
 | Overlay hilang saat fokus ke Roblox (Mac) | Pastikan `pyobjc-framework-Cocoa` terpasang dan `mac_always_visible()` dipanggil setelah `ov.show()` |
 | Window Roblox tidak ketemu (Windows) | Judul window harus persis `Roblox`. Cek di Task Manager |

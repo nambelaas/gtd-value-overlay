@@ -1,0 +1,54 @@
+EXCLUSIVE
+Gold Bunny Burrow
+Value: 24.45k+ --> 26.3k+
+Demand: 4/10 --> 5/10
+
+Silver Bunny Burrow
+Value: 16.2k+ --> 16.9k+
+Demand: 6/10 --> 4.5/10
+
+Shockfrost Sprout
+Value: 2.25k+ --> 2.6k+
+Demand: 7.5/10 --> 5.5/10
+
+Oracle Bloom
+Value: N/A --> 2.5k+
+Demand: N/A --> 6/10
+Status: N/A --> Unstable
+
+Stickpetal
+Value: 2.15K+ --> 2.05K+
+
+Sprinklord
+Value: 1.4k+ --> 1.6k+
+Demand: 4/10 --> 5.5/10
+
+Rageroot
+Value: N/A --> 1.3k+
+Demand: N/A --> 3.5/10
+Status: N/A --> Unstable
+
+Grapes
+Value: 160+ --> 1.05k+
+Demand: 2/10 --> 4/10
+Status: Stable --> Unstable
+
+Frankensprout
+Value: 285+ --> 720+
+Demand: 2/10 --> 5.5/10
+Status: Stable --> Unstable
+
+
+GODLY
+Witchleaf
+Value: 90k+ -> 100k+ (O/C) --> 120k+ -> 145k+ (O/C)
+Demand: 6/10 --> 5.5/10
+
+Grim Gardener
+Value: 36.5k+ --> 30.2k+
+Demand: 8/10 --> 7.5/10
+
+Bunny Burrow
+Value: 14.8k+ --> 14.65k+
+Demand: 7.5/10 --> 6/10
+Status: Unstable --> Fluctuating

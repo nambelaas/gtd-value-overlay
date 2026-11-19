@@ -2,8 +2,8 @@ mss
 opencv-python
 numpy
 PyQt5
-pytesseract
+platformdirs
 pyperclip
 pyobjc-framework-Quartz; sys_platform == "darwin"
-pywin32; sys_platform == "win32"
 pyobjc-framework-Cocoa; sys_platform == "darwin"
+pywin32; sys_platform == "win32"

@@ -31,16 +31,16 @@ import logging
 import signal
 from logging.handlers import RotatingFileHandler
 
-from paths import TEMPLATE_DIR, VALUES_FILE, ARROW_FILE, DATA_DIR, DOCS_DIR, LOG_DIR
+from paths import (TEMPLATE_DIR, TEMPLATE_DIRS, VALUES_FILE, ARROW_FILE,
+                   DATA_DIR, DOCS_DIR, LOG_DIR, ensure_user_data)
 
 from pathlib import Path
 
+from single_instance import SingleInstance
+
 import autostart
 
-try:
-    import pytesseract
-except ImportError:
-    pytesseract = None
+from qty_digits import read_qty
 
 THRESHOLD = 0.75       # naikkan kalau salah deteksi, turunkan kalau banyak yang lolos
 SCAN_INTERVAL = 1.0    # detik
@@ -72,9 +72,13 @@ log = logging.getLogger("gtd")
 # ---------------------------------------------------------------- templates
 def load_templates():
     """templates/Nama Unit.png ; variasi: 'Nama Unit__2.png', 'Nama Unit__shiny.png'"""
-    TEMPLATE_DIR.mkdir(exist_ok=True)
+    files = {}
+    for d in TEMPLATE_DIRS:                  # bawaan dulu, lalu milik user (menang kalau namanya sama)
+        if d.is_dir():
+            for p in d.glob("*.png"):
+                files[p.name] = p
     result = []  # (name, full_w, full_h, [(img, scale, offset_x, offset_y), ...])
-    for p in sorted(TEMPLATE_DIR.glob("*.png")):
+    for p in (files[k] for k in sorted(files)):
         name = p.stem.split("__")[0]
         img = cv2.imread(str(p), cv2.IMREAD_COLOR)
         if img is None:
@@ -93,7 +97,7 @@ def load_templates():
 
 
 def load_values():
-    DATA_DIR.mkdir(exist_ok=True)
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
     if not VALUES_FILE.exists():
         VALUES_FILE.write_text("{}", encoding="utf-8")
     data = json.loads(VALUES_FILE.read_text(encoding="utf-8"))
@@ -154,7 +158,6 @@ def parse_val(s):
 
 
 def load_arrow():
-    print(str(ARROW_FILE))
     if not ARROW_FILE.exists():
         return None
     img = cv2.imread(str(ARROW_FILE), cv2.IMREAD_COLOR)
@@ -217,27 +220,28 @@ def run_overlay():
     from PyQt5.QtCore import Qt
 
     setup_logging()
-    templates = load_templates()
-    values = load_values()
-    arrow_tpl = load_arrow()
-    if not templates:
-        log.warning("Folder templates/ masih kosong. Jalankan: python gtd_value.py shot  lalu  crop")
-        return
-    if arrow_tpl is None:
-        log.info("[INFO] arrow.png belum ada -> total per sisi nonaktif (crop panah dengan nama 'arrow')")
-
     app = QtWidgets.QApplication(sys.argv)
     signal.signal(signal.SIGINT, signal.SIG_DFL)      # Ctrl+C di terminal tetap bisa menghentikan app
     app.setQuitOnLastWindowClosed(False)              # app hidup walau tidak ada jendela biasa
 
-    lock = QtCore.QLockFile(os.path.join(QtCore.QDir.tempPath(), "gtd_value_overlay.lock"))
-    if not lock.tryLock(200):
+    single = SingleInstance()                         # jangan dihapus: harus hidup selama app jalan
+    if single.already_running():
         log.warning("Instance lain sudah berjalan. Keluar.")
         return
+
+    templates = load_templates()
+    values = load_values()
+    arrow_tpl = load_arrow()
+    if not templates:
+        log.warning("Tidak ada template di: %s", ", ".join(str(d) for d in TEMPLATE_DIRS))
+        return
+    if arrow_tpl is None:
+        log.info("arrow.png belum ada -> total per sisi nonaktif")
+
     screen = app.primaryScreen()
     geo = screen.geometry()
     qt_ratio = screen.devicePixelRatio() if sys.platform == "win32" else 1.0
-
+    
     class Worker(QtCore.QThread):
         result = QtCore.pyqtSignal(list, list)
 
@@ -523,13 +527,13 @@ def take_shot():
     with mss.mss() as sct:
         img = np.array(sct.grab(region or sct.monitors[1]))[:, :, :3]
 
-    DOCS_DIR.mkdir(exist_ok=True)
+    DOCS_DIR.mkdir(parents=True, exist_ok=True)
     cv2.imwrite(str(DOCS_DIR / "screenshot.png"), img)
     print("Tersimpan: docs/screenshot.png")
 
 def crop_tool(path):
-    TEMPLATE_DIR.mkdir(exist_ok=True)
-    DOCS_DIR.mkdir(exist_ok=True)
+    TEMPLATE_DIR.mkdir(parents=True, exist_ok=True)
+    DOCS_DIR.mkdir(parents=True, exist_ok=True)
     img = cv2.imread(path)
     if img is None:
         print("File tidak ditemukan")
@@ -543,8 +547,9 @@ def crop_tool(path):
         if not name:
             continue
         if name.lower() == "arrow":
+            ARROW_FILE.parent.mkdir(parents=True, exist_ok=True)
             cv2.imwrite(str(ARROW_FILE), img[y: y + h, x: x + w])
-            print("Disimpan: docs/arrow.png")
+            print("Disimpan:", ARROW_FILE)       # sebelumnya tertulis docs/arrow.png padahal lokasinya data/
             continue
         out = TEMPLATE_DIR / f"{name}.png"
         n = 2
@@ -554,63 +559,6 @@ def crop_tool(path):
         cv2.imwrite(str(out), img[y: y + h, x: x + w])
         print("Disimpan:", out.name)
     cv2.destroyAllWindows()
-
-def read_qty(frame, x, y, w, h):
-    """Baca badge 'xN' di kanan atas ikon. Tidak ada badge / ragu -> 1."""
-    if pytesseract is None:
-        return 1
-    H, W = frame.shape[:2]
-    x0, x1 = max(0, int(x + w * 0.45)), min(W, int(x + w * 0.97))
-    y0, y1 = max(0, int(y + h * 0.06)), min(H, int(y + h * 0.55))
-    if x1 - x0 < 10 or y1 - y0 < 10:
-        return 1
-
-    roi = frame[y0:y1, x0:x1]
-    gray = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
-    white = (roi.min(axis=2) > 200).astype(np.uint8)       # dilonggarkan: tepi huruf ikut terambil
-    dark = gray < 80
-
-    # Simpan hanya komponen putih yang dikelilingi outline hitam
-    kk = max(3, int(w / 36) // 2 * 2 + 1)
-    kernel = np.ones((kk, kk), np.uint8)
-    min_area = max(6, int((w / 40) ** 2))
-    n, labels, stats, _ = cv2.connectedComponentsWithStats(white, connectivity=8)
-    keep = np.zeros_like(white)
-    for i in range(1, n):
-        if stats[i, cv2.CC_STAT_AREA] < min_area:
-            continue
-        comp = (labels == i).astype(np.uint8)
-        ring = cv2.dilate(comp, kernel) > comp
-        if ring.any() and dark[ring].mean() > 0.4:
-            keep |= comp
-    if keep.sum() < min_area * 2:
-        return 1
-
-    # Crop rapat ke teks
-    ys, xs = np.where(keep > 0)
-    keep = keep[max(0, ys.min() - 2): ys.max() + 3, max(0, xs.min() - 2): xs.max() + 3]
-
-    # Haluskan: upscale -> blur -> threshold ulang (menutup celah, bikin tepi mulus)
-    big = cv2.resize(keep * 255, None, fx=6, fy=6, interpolation=cv2.INTER_CUBIC)
-    big = cv2.GaussianBlur(big, (0, 0), 2.2)
-    _, big = cv2.threshold(big, 100, 255, cv2.THRESH_BINARY)   # threshold rendah = sedikit lebih tebal
-    big = cv2.morphologyEx(big, cv2.MORPH_CLOSE,
-                           cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5)))
-
-    img = 255 - big                                          # teks hitam, background putih
-    img = cv2.copyMakeBorder(img, 30, 30, 30, 30, cv2.BORDER_CONSTANT, value=255)
-    if DEBUG_QTY:
-        DOCS_DIR.mkdir(exist_ok=True)
-        cv2.imwrite(str(DOCS_DIR / "debug_qty.png"), img)
-
-    txt = pytesseract.image_to_string(
-        img, config="--psm 7 -c tessedit_char_whitelist=xX0123456789").strip()
-    if DEBUG_QTY:
-        print(f"[qty] OCR mentah: {txt!r}")
-    m = re.fullmatch(r"[xX]?\s*(\d{1,3})", txt)
-    if m and 2 <= int(m.group(1)) <= 999:
-        return int(m.group(1))
-    return 1
 
 def label_text(base, qty):
     """'2.25', 6 -> '2.25 ×6 = 13.5'. Value non-angka tetap ditampilkan apa adanya."""
@@ -643,6 +591,7 @@ def setup_logging():
     sys.excepthook = lambda *a: log.critical("Error tak tertangani", exc_info=a)
 
 if __name__ == "__main__":
+    ensure_user_data()
     if len(sys.argv) > 1 and sys.argv[1] == "shot":
         take_shot()
     elif len(sys.argv) > 2 and sys.argv[1] == "crop":
