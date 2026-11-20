@@ -490,6 +490,11 @@ def run_overlay():
     else:
         log.warning("System tray tidak tersedia. Berhenti lewat Ctrl+C di terminal.")
 
+    try:
+        autostart.refresh_if_enabled(Path(__file__).resolve())
+    except Exception:
+        log.exception("Gagal memperbarui entri auto-start")
+    
     log.info("Jalan. %d template, %d value.", len(templates), len(values))
     sys.exit(app.exec_())
 

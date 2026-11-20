@@ -6,3 +6,5 @@ data/values.json.bak
 # templates/
 logs/
 .run
+build/
+dist/

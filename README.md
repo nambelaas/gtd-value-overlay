@@ -32,6 +32,7 @@ gtd-value-overlay/
 │   └── glyphs/                # template huruf badge qty: x, 0-9
 ├── templates/                 # template ikon unit (dibuat sendiri lewat tool crop)
 ├── updates/                   # simpan tiap post update Discord di sini (file teks)
+├── packaging/                 # build jadi aplikasi (spec PyInstaller, ikon, skrip build)
 ├── docs/
 │   └── screenshot.png         # gambar untuk README
 ├── requirements.txt
@@ -147,6 +148,31 @@ Tiap unit di `data/values.json` menyimpan tanggal update terakhirnya (`"updated"
 - Unit baru ditandai di output, cek ejaannya dengan nama template
 
 **Skala angka:** secara default value disimpan dalam ribuan (`30.45k+` jadi `30.45`). Kalau `data/values.json`-mu memakai angka penuh, ubah `STORE_IN_K = False` di `update_values.py`. Jangan campur dua skala dalam satu file.
+
+## Membuat aplikasi (build)
+
+Aplikasi dibangun dengan PyInstaller. Build harus dilakukan di OS tujuan (`.app` hanya bisa dibuat di Mac, `.exe` hanya di Windows).
+
+**Mac:**
+
+```
+bash packaging/build_mac.sh          # hasil: dist/GTDValue.app
+```
+
+**Windows:**
+
+```
+packaging\build_windows.bat          # hasil: dist\GTDValue\GTDValue.exe
+```
+
+Di mode aplikasi:
+
+- Template, `values.json` awal, `arrow.png`, dan `glyphs/` ikut dibundel (read-only).
+- Data user dan log ditulis ke folder standar OS: `~/Library/Application Support/GTDValue` dan `~/Library/Logs/GTDValue` (Mac), `%LOCALAPPDATA%\GTDValue` (Windows). `values.json` di folder itu disalin dari bundle saat pertama jalan dan tidak ditimpa lagi.
+- Tidak ada ikon di Dock/taskbar. Kontrol lewat ikon **V** di tray: Jeda, Muat ulang values, Buka folder data/log, Jalan otomatis saat login, Keluar.
+- **Mac, pertama kali dibuka:** izinkan *Screen Recording* untuk GTDValue di System Settings > Privacy & Security, lalu **Keluar dari app dan buka lagi**.
+- **Mac, supaya izin tidak hilang tiap build ulang:** build dengan tanda tangan tetap. Buat sertifikat di Keychain Access > Certificate Assistant > Create a Certificate (tipe Code Signing, misalnya bernama `GTDValue Dev`), lalu jalankan `SIGN_IDENTITY="GTDValue Dev" bash packaging/build_mac.sh`. Tanpa itu dipakai tanda tangan ad-hoc, dan izin bisa perlu diberikan ulang setelah build baru.
+- Build yang dibuat di Mac-mu sendiri langsung bisa dibuka. App yang **diunduh orang lain** akan diblokir Gatekeeper (Mac) atau SmartScreen (Windows) karena belum ditandatangani developer: di Mac buka lewat klik kanan > Open, di Windows klik "More info" > "Run anyway".
 
 ## Konfigurasi
 
