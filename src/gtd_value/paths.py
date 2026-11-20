@@ -38,6 +38,7 @@ TEMPLATE_DIRS = (BUNDLED_TEMPLATES, USER_TEMPLATES)
 TEMPLATE_DIR = USER_TEMPLATES if FROZEN else BUNDLED_TEMPLATES   # tujuan simpan hasil tool crop
 
 GLYPH_DIR = RESOURCE_DIR / "data" / "glyphs"      # template huruf badge qty (read-only, ikut dibundel)
+TRAY_ICON = RESOURCE_DIR / "data" / "tray.png"          # ikon menu bar / tray (read-only, ikut dibundel)
 UPDATES_DIR = ROOT / "updates"
 VALUES_FILE = DATA_DIR / "values.json"
 ARROW_FILE = DATA_DIR / "arrow.png"

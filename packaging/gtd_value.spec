@@ -17,6 +17,7 @@ datas = [
     (str(ROOT / "templates"), "templates"),
     (str(ROOT / "data" / "values.json"), "data"),
     (str(ROOT / "data" / "arrow.png"), "data"),
+    (str(ROOT / "data" / "tray.png"), "data"),
     (str(ROOT / "data" / "glyphs"), "data/glyphs"),
 ]
 

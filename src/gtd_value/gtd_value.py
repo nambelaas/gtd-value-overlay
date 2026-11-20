@@ -32,7 +32,7 @@ import signal
 from logging.handlers import RotatingFileHandler
 
 from paths import (TEMPLATE_DIR, TEMPLATE_DIRS, VALUES_FILE, ARROW_FILE,
-                   DATA_DIR, DOCS_DIR, LOG_DIR, ensure_user_data)
+                   DATA_DIR, DOCS_DIR, LOG_DIR, TRAY_ICON, ensure_user_data)
 
 from pathlib import Path
 
@@ -436,6 +436,8 @@ def run_overlay():
 
     # ---- tray icon
     def make_icon():
+        if TRAY_ICON.exists():
+            return QtGui.QIcon(str(TRAY_ICON))
         pm = QtGui.QPixmap(64, 64)
         pm.fill(Qt.transparent)
         p = QtGui.QPainter(pm)

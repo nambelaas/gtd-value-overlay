@@ -1,5 +1,7 @@
 # GTD Value Overlay
 
+<p align="center"><img src="docs/logo.png" width="160" alt="GTD Value Overlay"></p>
+
 Overlay value unit untuk menu trade **Garden Tower Defense** (Roblox). Program scan window Roblox, mengenali ikon unit, lalu menampilkan value di atas tiap ikon, lengkap dengan total per sisi trade dan selisihnya.
 
 Program ini **hanya membaca layar** (screenshot). Tidak ada injeksi atau modifikasi client Roblox.
@@ -34,6 +36,7 @@ gtd-value-overlay/
 ├── updates/                   # simpan tiap post update Discord di sini (file teks)
 ├── packaging/                 # build jadi aplikasi (spec PyInstaller, ikon, skrip build)
 ├── docs/
+│   ├── logo.png               # logo untuk README
 │   └── screenshot.png         # gambar untuk README
 ├── requirements.txt
 └── README.md
@@ -172,7 +175,7 @@ Di mode aplikasi:
 - Tidak ada ikon di Dock/taskbar. Kontrol lewat ikon **V** di tray: Jeda, Muat ulang values, Buka folder data/log, Jalan otomatis saat login, Keluar.
 - **Mac, pertama kali dibuka:** izinkan *Screen Recording* untuk GTDValue di System Settings > Privacy & Security, lalu **Keluar dari app dan buka lagi**.
 - **Mac, supaya izin tidak hilang tiap build ulang:** build dengan tanda tangan tetap. Buat sertifikat di Keychain Access > Certificate Assistant > Create a Certificate (tipe Code Signing, misalnya bernama `GTDValue Dev`), lalu jalankan `SIGN_IDENTITY="GTDValue Dev" bash packaging/build_mac.sh`. Tanpa itu dipakai tanda tangan ad-hoc, dan izin bisa perlu diberikan ulang setelah build baru.
-- Build yang dibuat di Mac-mu sendiri langsung bisa dibuka. App yang **diunduh orang lain** akan diblokir Gatekeeper (Mac) atau SmartScreen (Windows) karena belum ditandatangani developer: di Mac buka lewat klik kanan > Open, di Windows klik "More info" > "Run anyway".
+- Build yang dibuat di Mac-mu sendiri langsung bisa dibuka. App yang **diunduh orang lain** akan diblokir Gatekeeper (Mac) atau SmartScreen (Windows) karena belum ditandatangani developer: di Mac klik **Selesai** lalu izinkan lewat Pengaturan Sistem > Privasi & Keamanan > **Tetap Buka** (atau jalankan `xattr -dr com.apple.quarantine /Applications/GTDValue.app`), di Windows klik "More info" > "Run anyway".
 
 ## Rilis otomatis (GitHub Actions)
 
