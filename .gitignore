@@ -8,3 +8,6 @@ logs/
 .run
 build/
 dist/
+installer/
+dmg-staging/
+*.dmg

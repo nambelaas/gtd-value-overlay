@@ -9,7 +9,7 @@ ROOT = Path(SPECPATH).parent                   # folder repo (spec ada di packag
 SRC = ROOT / "src" / "gtd_value"
 IS_MAC = sys.platform == "darwin"
 IS_WIN = sys.platform == "win32"
-VERSION = "0.1.0"
+VERSION = os.environ.get("GTD_VERSION", "0.1.0")    # CI mengisinya dari nama tag (v0.2.0 -> 0.2.0)
 ENTRY = os.environ.get("GTD_ENTRY", "gtd_value.py")     # hook untuk tes build; biarkan default
 
 # Yang ikut dibundel (read-only). Data user (values.json yang bisa berubah, log) ditulis ke folder user.

@@ -1,0 +1,114 @@
+name: Build dan rilis
+
+on:
+  push:
+    tags: ["v*"]          # contoh: git tag v0.1.0 && git push origin v0.1.0
+  workflow_dispatch:      # atau jalankan manual dari tab Actions (tanpa membuat rilis)
+
+permissions:
+  contents: write         # dibutuhkan untuk membuat rilis
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            name: windows
+          - os: macos-latest
+            name: mac
+    runs-on: ${{ matrix.os }}
+    env:
+      GTD_VERSION: ${{ startsWith(github.ref, 'refs/tags/v') && github.ref_name || '0.0.0' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Pastikan file bawaan ada di repo
+        shell: bash
+        run: |
+          ls templates/*.png >/dev/null 2>&1 || { echo "::error::templates/ kosong atau tidak ter-commit (cek .gitignore)"; exit 1; }
+          for f in data/values.json data/arrow.png; do
+            test -f "$f" || { echo "::error::$f tidak ada di repo"; exit 1; }
+          done
+          ls data/glyphs/*.png >/dev/null 2>&1 || { echo "::error::data/glyphs/ kosong"; exit 1; }
+          echo "template: $(ls templates/*.png | wc -l) file"
+
+      - name: Install dependensi
+        run: python -m pip install -r requirements.txt pyinstaller
+
+      - name: Build
+        shell: bash
+        run: |
+          VER="${GTD_VERSION#v}"
+          GTD_VERSION="$VER" python -m PyInstaller --noconfirm --clean packaging/gtd_value.spec
+
+      # ---------------- Windows ----------------
+      - name: Windows - cek hasil dan buat zip
+        if: matrix.name == 'windows'
+        shell: pwsh
+        run: |
+          if (-not (Test-Path dist/GTDValue/GTDValue.exe)) { throw "GTDValue.exe tidak ditemukan" }
+          Compress-Archive -Path dist/GTDValue -DestinationPath GTDValue-windows.zip
+
+      - name: Windows - buat installer (Inno Setup)
+        if: matrix.name == 'windows'
+        shell: pwsh
+        run: |
+          choco install innosetup -y --no-progress
+          $ver = "${{ env.GTD_VERSION }}".TrimStart("v")
+          & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" "/DMyAppVersion=$ver" packaging\installer.iss
+          if (-not (Test-Path installer/GTDValue-Setup.exe)) { throw "Installer tidak terbentuk" }
+
+      - uses: actions/upload-artifact@v4
+        if: matrix.name == 'windows'
+        with:
+          name: GTDValue-windows
+          path: |
+            GTDValue-windows.zip
+            installer/GTDValue-Setup.exe
+
+      # ---------------- Mac ----------------
+      - name: Mac - tanda tangan ad-hoc dan buat dmg
+        if: matrix.name == 'mac'
+        run: |
+          test -d dist/GTDValue.app
+          codesign --force --deep --sign - dist/GTDValue.app
+          codesign --verify --deep --strict dist/GTDValue.app
+          mkdir dmg-staging
+          cp -R dist/GTDValue.app dmg-staging/
+          ln -s /Applications dmg-staging/Applications
+          hdiutil create -volname "GTD Value" -srcfolder dmg-staging -ov -format UDZO GTDValue-mac.dmg
+
+      - uses: actions/upload-artifact@v4
+        if: matrix.name == 'mac'
+        with:
+          name: GTDValue-mac
+          path: GTDValue-mac.dmg
+
+  release:
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+      - name: Daftar file rilis
+        run: ls -R artifacts
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            artifacts/GTDValue-Setup.exe
+            artifacts/GTDValue-windows.zip
+            artifacts/GTDValue-mac.dmg
+          body_path: packaging/RELEASE_NOTES.md
+          generate_release_notes: true

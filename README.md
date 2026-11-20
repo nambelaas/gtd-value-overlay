@@ -174,6 +174,20 @@ Di mode aplikasi:
 - **Mac, supaya izin tidak hilang tiap build ulang:** build dengan tanda tangan tetap. Buat sertifikat di Keychain Access > Certificate Assistant > Create a Certificate (tipe Code Signing, misalnya bernama `GTDValue Dev`), lalu jalankan `SIGN_IDENTITY="GTDValue Dev" bash packaging/build_mac.sh`. Tanpa itu dipakai tanda tangan ad-hoc, dan izin bisa perlu diberikan ulang setelah build baru.
 - Build yang dibuat di Mac-mu sendiri langsung bisa dibuka. App yang **diunduh orang lain** akan diblokir Gatekeeper (Mac) atau SmartScreen (Windows) karena belum ditandatangani developer: di Mac buka lewat klik kanan > Open, di Windows klik "More info" > "Run anyway".
 
+## Rilis otomatis (GitHub Actions)
+
+Workflow di `.github/workflows/build.yml` membangun **Windows** (installer `GTDValue-Setup.exe` dan `GTDValue-windows.zip`) dan **Mac** (`GTDValue-mac.dmg`, Apple Silicon) sekaligus.
+
+- **Rilis resmi:** buat tag lalu push. Hasilnya otomatis jadi halaman rilis di tab **Releases**, lengkap dengan catatan cara pasang (`packaging/RELEASE_NOTES.md`):
+  ```
+  git tag v0.1.0
+  git push origin v0.1.0
+  ```
+- **Uji tanpa rilis:** tab **Actions** > "Build dan rilis" > **Run workflow**. Hasil build bisa diunduh dari bagian *Artifacts* di run itu (cocok untuk dikirim ke teman yang menguji).
+- File bawaan (`templates/`, `data/values.json`, `data/arrow.png`, `data/glyphs/`) **harus ter-commit**. Pastikan tidak ada di `.gitignore`; build akan berhenti dengan pesan jelas kalau hilang.
+- Untuk memperbarui value atau template di rilis berikutnya: update file-nya, commit, lalu buat tag versi baru.
+- App belum ditandatangani developer, jadi Windows (SmartScreen) dan Mac (Gatekeeper) akan menampilkan peringatan saat pertama dibuka. Caranya melewati itu ada di catatan rilis.
+
 ## Konfigurasi
 
 Konstanta di bagian atas `gtd_value.py`:
