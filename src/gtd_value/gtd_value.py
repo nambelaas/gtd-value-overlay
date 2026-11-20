@@ -248,6 +248,7 @@ def run_overlay():
         def __init__(self):
             super().__init__()
             self.running, self.paused = True, False
+            self.perm_ok = True
             self.last, self.ref, self.cached, self.t_det = [], None, [], 0.0
 
         def scan(self, sct):
@@ -256,6 +257,15 @@ def run_overlay():
             if not region:
                 self.ref = None
                 return items, pills
+            if not screen_capture_allowed():
+                if self.perm_ok:
+                    log.warning("Izin Screen Recording belum aktif untuk app ini. Scan dijeda sampai diizinkan.")
+                    self.perm_ok = False
+                self.ref = None
+                return [], []
+            if not self.perm_ok:
+                log.info("Izin Screen Recording aktif, scan dilanjutkan.")
+                self.perm_ok = True
             frame = np.array(sct.grab(region))[:, :, :3]
             scale = frame.shape[1] / region["width"]
             k = scale * qt_ratio
@@ -393,6 +403,7 @@ def run_overlay():
     ov = Overlay()
     ov.show()
     ov.mac_always_visible()
+    screen_capture_allowed(request=True)     # dialog izin muncul sekali saja kalau belum diberi
     worker = Worker()
     worker.result.connect(ov.update_items)
     worker.start()
@@ -522,6 +533,20 @@ def get_roblox_region():
             _, _, w, h = win32gui.GetClientRect(hwnd)
             return {"left": left, "top": top, "width": w, "height": h}
     return None
+
+def screen_capture_allowed(request=False):
+    """Mac: sudah diberi izin Screen Recording? request=True memunculkan dialog izin satu kali."""
+    if sys.platform != "darwin":
+        return True
+    try:
+        from Quartz import CGPreflightScreenCaptureAccess, CGRequestScreenCaptureAccess
+        if CGPreflightScreenCaptureAccess():
+            return True
+        if request:
+            CGRequestScreenCaptureAccess()
+        return False
+    except Exception:
+        return True          # API tidak tersedia: jangan memblokir scan
 
 def take_shot():
     print("Pindah ke game, screenshot dalam 3 detik...")
